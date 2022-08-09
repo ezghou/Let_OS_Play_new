@@ -34,7 +34,7 @@ import java.net.URL;
             Play.setBounds(440, 125, 190, 55);
             Play.setContentAreaFilled(false);
             Play.setFocusable(false);
-            Play.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+            Play.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             Play.addMouseListener(this);
 
             HowToPlayButton = new JButton();
@@ -46,7 +46,7 @@ import java.net.URL;
             HowToPlayButton.setBounds(440, 190, 190, 55);
             HowToPlayButton.setContentAreaFilled(false);
             HowToPlayButton.setFocusable(false);
-            HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+            HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             HowToPlayButton.addMouseListener(this);
 
             Exit = new JButton();
@@ -58,7 +58,7 @@ import java.net.URL;
             Exit.setBounds(440, 255, 190, 55);
             Exit.setContentAreaFilled(false);
             Exit.setFocusable(false);
-            Exit.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+            Exit.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             Exit.addMouseListener(this);
 
             this.setTitle("Let OS Play");
@@ -85,7 +85,7 @@ import java.net.URL;
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
-                new TheLadder_HowToPlayFrame();
+                new Lockdown_HowToPlayFrame();
                 this.dispose();
             }
             if(e.getSource()==Exit){
@@ -104,16 +104,16 @@ import java.net.URL;
 
             if(e.getSource()==Play){
                 Play.setFont(new Font("Cambria", Font.BOLD, 30));
-                Play.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),5));
+                Play.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),5));
             }
             if(e.getSource()==HowToPlayButton){
                 HowToPlayButton.setFont(new Font("Cambria", Font.BOLD, 30));
-                HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),5));
+                HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),5));
             }
 
             if(e.getSource()==Exit){
                 Exit.setFont(new Font("Cambria", Font.BOLD, 30));
-                Exit.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),5));
+                Exit.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),5));
             }
 
 
@@ -123,16 +123,16 @@ import java.net.URL;
 
             if(e.getSource()==Play){
                 Play.setFont(new Font("Cambria", Font.BOLD, 25));
-                Play.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+                Play.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             }
             if(e.getSource()==HowToPlayButton){
                 HowToPlayButton.setFont(new Font("Cambria", Font.BOLD, 25));
-                HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+                HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             }
 
             if(e.getSource()==Exit){
                 Exit.setFont(new Font("Cambria", Font.BOLD, 25));
-                Exit.setBorder(BorderFactory.createLineBorder(new Color(255, 255, 0),4));
+                Exit.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             }
 
 

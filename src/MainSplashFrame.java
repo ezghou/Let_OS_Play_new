@@ -36,7 +36,7 @@ public class MainSplashFrame extends JFrame{
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
         //new MainSplashFrame();
         //new TheLadder_Quiz();
-        new Lockdown_MainFrame();
+        new Lockdown_InfectedFrame(100);
 
     }
 }
