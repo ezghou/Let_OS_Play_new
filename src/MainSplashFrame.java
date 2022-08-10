@@ -7,6 +7,8 @@ import java.net.URL;
 @SuppressWarnings("ALL")
 public class MainSplashFrame extends JFrame{
 
+    private Lockdown_GameFrame game;
+    public static int checkLockdownClicked = 0;
     MainSplashFrame() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
@@ -34,9 +36,9 @@ public class MainSplashFrame extends JFrame{
     }
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-        //new MainSplashFrame();
-        //new TheLadder_Quiz();
-        new Lockdown_InfectedFrame(100);
+//        new MainSplashFrame();
+        new Lockdown_GameFrame();
+
 
     }
 }

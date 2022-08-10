@@ -66,7 +66,6 @@ public class MainFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==selectLadder){
-            //insert your code here
             try {
                 new TheLadder_splashFrame();
             } catch (InterruptedException ex) {
@@ -75,7 +74,6 @@ public class MainFrame extends JFrame implements ActionListener {
             this.dispose();
         }
         if(e.getSource()==selectLockdown){
-            //insert your code here
             try {
                 new Lockdown_SplashScreen();
             } catch (InterruptedException ex) {
@@ -84,7 +82,6 @@ public class MainFrame extends JFrame implements ActionListener {
             this.dispose();
         }
         if(e.getSource()==selectOSNAKES){
-            //insert your code here
             try {
                 new OSnakes_splashFrame();
             } catch (InterruptedException ex) {

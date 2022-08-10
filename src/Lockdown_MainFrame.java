@@ -11,10 +11,10 @@ import java.net.URL;
         private final JButton HowToPlayButton;
         private final JButton Exit;
         private final JLabel mainLogo;
+        int SCREEN_WIDTH = 1060;
+        int SCREEN_HEIGHT = 660;
 
         Lockdown_MainFrame() {
-            int SCREEN_WIDTH = 1060;
-            int SCREEN_HEIGHT = 660;
             URL iconURL = getClass().getResource("Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
@@ -81,7 +81,7 @@ import java.net.URL;
         public void mouseClicked(MouseEvent e) {
 
             if(e.getSource()==Play){
-                new TheLadder_ApplicationForm();
+                new Lockdown_GameFrame();
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
