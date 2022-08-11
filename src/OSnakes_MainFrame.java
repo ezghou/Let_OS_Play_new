@@ -90,7 +90,7 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
             this.dispose();
         }
         if(e.getSource()==homeButton){
-            new MainFrame();
+            new MainGameFrame(false);
             this.dispose();
         }
     }

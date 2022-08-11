@@ -91,7 +91,7 @@ import java.net.URL;
                 this.dispose();
             }
             if(e.getSource() == Home){
-                new MainFrame();
+                new MainGameFrame(false);
                 this.dispose();
             }
         }

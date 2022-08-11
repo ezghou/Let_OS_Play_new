@@ -78,7 +78,7 @@ public class Lockdown_InfectedFrame extends JFrame implements MouseListener{
                 this.dispose();
             }
             if(e.getSource() == Home){
-                new MainFrame();
+                new MainGameFrame(false);
                 this.dispose();
             }
         }

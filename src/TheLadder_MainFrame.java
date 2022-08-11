@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 @SuppressWarnings("ALL")
@@ -96,7 +94,7 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
             this.dispose();
         }
         if(e.getSource()==Exit){
-            new MainFrame();
+            new MainGameFrame(false);
             this.dispose();
         }
 

@@ -81,7 +81,7 @@ import java.net.URL;
         public void mouseClicked(MouseEvent e) {
 
             if(e.getSource()==Play){
-                new Lockdown_GameFrame();
+                new MainGameFrame(true);
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
@@ -89,7 +89,7 @@ import java.net.URL;
                 this.dispose();
             }
             if(e.getSource()==Exit){
-                new MainFrame();
+                new MainGameFrame(false);
                 this.dispose();
             }
 

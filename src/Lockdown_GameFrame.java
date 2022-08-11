@@ -5,11 +5,10 @@ import java.net.URL;
 
 public class Lockdown_GameFrame extends JFrame{
 
-    int SCREEN_WIDTH = 1260;
-    int SCREEN_HEIGHT = 760;
+    int SCREEN_WIDTH = 1070;
+    int SCREEN_HEIGHT = 695;
     Lockdown_GamePanel gamePanel = new Lockdown_GamePanel();
 
-    private final JLabel mainLogo;
     Lockdown_GameFrame(){
 
         URL iconURL = getClass().getResource("Resources/titleIcon.png");
@@ -22,17 +21,9 @@ public class Lockdown_GameFrame extends JFrame{
         this.setIconImage(titleIcon.getImage());
 //        this.getContentPane().setBackground(new Color(6,19,44));
         this.setLocationRelativeTo(null); //Center frame in screen
+        this.setLayout(null);
         this.setVisible(true);
 
-        mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/Lockdown_Lawn.png")));
-        mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-        mainLogo.setVerticalAlignment(JLabel.VERTICAL);
-        mainLogo.setHorizontalAlignment(JLabel.HORIZONTAL);
-        mainLogo.setVisible(true);
-
-
-
-        this.add(mainLogo);
         this.add(gamePanel);
     }
 

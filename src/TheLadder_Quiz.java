@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -374,7 +372,7 @@ import java.util.logging.Logger;
             try {
                 click.soundChoice(2);
             } catch (Exception ex) {
-                Logger.getLogger(MainSplashFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             //Adding points and diplaying it.
 
@@ -389,7 +387,7 @@ import java.util.logging.Logger;
             try {
                 click.soundChoice(3);
             } catch (Exception ex) {
-                Logger.getLogger(MainSplashFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

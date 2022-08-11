@@ -1,15 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
-@SuppressWarnings("ALL")
-public class MainSplashFrame extends JFrame{
+public class SplashScreen extends JFrame {
 
-    private Lockdown_GameFrame game;
-    public static int checkLockdownClicked = 0;
-    MainSplashFrame() throws InterruptedException {
+    SplashScreen() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
         URL iconURL = getClass().getResource("Resources/titleIcon.png");
@@ -20,25 +15,18 @@ public class MainSplashFrame extends JFrame{
         logo.setHorizontalAlignment(JLabel.CENTER);
 
         this.setTitle("Let OS Play");
-        this.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+        this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setIconImage(titleIcon.getImage());
-        this.getContentPane().setBackground(new Color(6,19,44));
+        this.getContentPane().setBackground(new Color(6, 19, 44));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
 
         this.getContentPane().add(logo);
 
         Thread.sleep(3000);
-        new MainFrame();
+        new MainGameFrame(false);
         this.dispose();
-    }
-
-    public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-//        new MainSplashFrame();
-        new Lockdown_GameFrame();
-
-
     }
 }

@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 
 @SuppressWarnings("ALL")
-public class MainFrame extends JFrame implements ActionListener {
+public class MainFrame_DELETE extends JFrame implements ActionListener {
     JLabel logo;
     JButton selectLadder;
     JButton selectLockdown;
     JButton selectOSNAKES;
 
-    MainFrame() {
+    MainFrame_DELETE() {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
 
