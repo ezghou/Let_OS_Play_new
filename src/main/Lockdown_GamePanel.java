@@ -1,6 +1,7 @@
 package main;
 
 import entity.Background;
+import entity.Cards;
 import entity.Player;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
     Lockdown_MouseHandler mouseHandler = new Lockdown_MouseHandler();
     Background bg = new Background(this);
     Player player = new Player(this,mouseHandler);
+    Cards card = new Cards(this,mouseHandler);
     Thread gameThread;
     int FPS = 60;
 
@@ -32,14 +34,6 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         this.setBackground(new Color(3,10,33));
         this.setDoubleBuffered(true);
-
-//        this.setLayout(null);
-//
-//        mainLogo = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/Resources/Lockdown_Lawn_exact.png"))));
-//        mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-//        mainLogo.setVerticalAlignment(JLabel.VERTICAL);
-//        mainLogo.setHorizontalAlignment(JLabel.HORIZONTAL);
-//        mainLogo.setVisible(true);
 
         coins = new JLabel();
         coins.setText(" Coins: " + "10");
@@ -196,6 +190,7 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
 
     public void update(){
         bg.update();
+        card.update();
         player.update();
     }
 
@@ -203,6 +198,7 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         bg.draw(g2);
+        card.draw(g2);
         player.draw(g2);
         g2.dispose();
     }

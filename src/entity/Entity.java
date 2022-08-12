@@ -7,8 +7,11 @@ public class Entity {
     public int health;
     public int damage;
     public int attackSpeed;
-    public int speed;
+    public int cooldown;
 
     public BufferedImage backGround;
     public BufferedImage taxPayer;
+    public BufferedImage nurse;
+    public BufferedImage doctor;
+    public BufferedImage soldier;
 }
