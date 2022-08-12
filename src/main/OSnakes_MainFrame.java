@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -15,11 +17,11 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
     OSnakes_MainFrame() {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
-        URL iconURL = getClass().getResource("Resources/titleIcon.png");
+        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
 
-        JLabel mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_mainLogo.png")), JLabel.CENTER);
+        JLabel mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_mainLogo.png")), JLabel.CENTER);
         mainLogo.setBounds(230, 20, 600, 230);
         mainLogo.setVisible(true);
 

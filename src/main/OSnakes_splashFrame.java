@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -12,11 +14,11 @@ public class OSnakes_splashFrame extends JFrame implements MouseListener {
     OSnakes_splashFrame() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
-        URL iconURL = getClass().getResource("Resources/titleIcon.png");
+        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
 
-        OSnakes_bg = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_bg.gif")));
+        OSnakes_bg = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_bg.gif")));
         OSnakes_bg.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         OSnakes_bg.setVerticalAlignment(JLabel.CENTER);
         OSnakes_bg.setHorizontalAlignment(JLabel.CENTER);

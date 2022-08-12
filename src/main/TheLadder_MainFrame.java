@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -14,11 +16,11 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
     TheLadder_MainFrame() {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
-        URL iconURL = getClass().getResource("Resources/titleIcon.png");
+        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
 
-        JLabel mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/TheLadder_MainFrame.png")), JLabel.CENTER);
+        JLabel mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/TheLadder_MainFrame.png")), JLabel.CENTER);
         mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         mainLogo.setVerticalAlignment(JLabel.CENTER);
         mainLogo.setHorizontalAlignment(JLabel.CENTER);

@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -68,11 +70,11 @@ import java.util.logging.Logger;
         TheLadder_Quiz() throws FileNotFoundException, URISyntaxException {
             int SCREEN_WIDTH = 1060;
             int SCREEN_HEIGHT = 660;
-            URL iconURL = getClass().getResource("Resources/titleIcon.png");
+            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
 
-            mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/TheLadder_Quiz.png")), JLabel.CENTER);
+            mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/TheLadder_Quiz.png")), JLabel.CENTER);
             mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
             mainLogo.setVerticalAlignment(JLabel.CENTER);
             mainLogo.setHorizontalAlignment(JLabel.CENTER);

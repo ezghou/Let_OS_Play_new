@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -12,11 +14,11 @@ import java.net.URL;
         TheLadder_HowToPlayFrame() {
             int SCREEN_WIDTH = 1060;
             int SCREEN_HEIGHT = 660;
-            URL iconURL = getClass().getResource("Resources/titleIcon.png");
+            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
 
-            mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/TheLadder_HowToPlay.png")));
+            mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/TheLadder_HowToPlay.png")));
             mainLogo.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
             mainLogo.setLocation(0, 0);
             mainLogo.setVisible(true);

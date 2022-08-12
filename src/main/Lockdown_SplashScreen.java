@@ -1,22 +1,23 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
-import java.util.Objects;
 
-public class TheLadder_splashFrame extends JFrame implements MouseListener {
+    public class Lockdown_SplashScreen extends JFrame implements MouseListener {
 
         JLabel OSnakes_bg;
 
-    TheLadder_splashFrame() throws InterruptedException {
+        Lockdown_SplashScreen() throws InterruptedException {
             int SCREEN_WIDTH = 1060;
             int SCREEN_HEIGHT = 660;
-            URL iconURL = getClass().getResource("Resources/titleIcon.png");
+            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
 
-            OSnakes_bg = new JLabel(new ImageIcon(getClass().getResource("Resources/The Ladder.gif")));
+            OSnakes_bg = new JLabel(new ImageIcon(getClass().getResource("/Resources/Lockdown_Splashscreen.png")));
             OSnakes_bg.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
             OSnakes_bg.setVerticalAlignment(JLabel.CENTER);
             OSnakes_bg.setHorizontalAlignment(JLabel.CENTER);
@@ -35,7 +36,7 @@ public class TheLadder_splashFrame extends JFrame implements MouseListener {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new TheLadder_MainFrame();
+            new Lockdown_MainFrame();
             this.dispose();
         }
 
@@ -48,4 +49,3 @@ public class TheLadder_splashFrame extends JFrame implements MouseListener {
         @Override
         public void mouseExited(MouseEvent e) {}
     }
-

@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.imageio.ImageIO;
@@ -46,10 +48,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     OSnakes_gamePanel(OSnakes_questionFrame questionFrame, int width, int height) {
         this.questionFrame = questionFrame;
         try{
-            iosIcon = ImageIO.read(getClass().getResourceAsStream("Resources/OSnakes_iosIcon.png"));
-            windowsIcon = ImageIO.read(getClass().getResourceAsStream("Resources/OSnakes_windowsIcon.png"));
-            ubuntuIcon = ImageIO.read(getClass().getResourceAsStream("Resources/OSnakes_ubuntuIcon.png"));
-            linuxIcon = ImageIO.read(getClass().getResourceAsStream("Resources/OSnakes_linuxIcon.png"));
+            iosIcon = ImageIO.read(getClass().getResourceAsStream("/Resources/OSnakes_iosIcon.png"));
+            windowsIcon = ImageIO.read(getClass().getResourceAsStream("/Resources/OSnakes_windowsIcon.png"));
+            ubuntuIcon = ImageIO.read(getClass().getResourceAsStream("/Resources/OSnakes_ubuntuIcon.png"));
+            linuxIcon = ImageIO.read(getClass().getResourceAsStream("/Resources/OSnakes_linuxIcon.png"));
         } catch(IOException e){
             e.printStackTrace();
         }

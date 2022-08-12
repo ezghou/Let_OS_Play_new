@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -15,11 +17,11 @@ import java.net.URL;
         int SCREEN_HEIGHT = 660;
 
         Lockdown_MainFrame() {
-            URL iconURL = getClass().getResource("Resources/titleIcon.png");
+            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
 
-            mainLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/Lockdown_MainFrame.png")));
+            mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/Lockdown_MainFrame.png")));
             mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
             mainLogo.setVerticalAlignment(JLabel.CENTER);
             mainLogo.setHorizontalAlignment(JLabel.CENTER);

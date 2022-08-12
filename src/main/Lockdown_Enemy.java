@@ -1,3 +1,5 @@
+package main;
+
 public class Lockdown_Enemy {
     int health;
     int damage;

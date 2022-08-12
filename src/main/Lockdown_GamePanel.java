@@ -1,21 +1,18 @@
+package main;
+
+import entity.Background;
+import entity.Player;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.Objects;
-import java.util.Random;
 
 public class Lockdown_GamePanel extends JPanel implements Runnable {
-    static final int SCREEN_WIDTH = 1060;
-    static final int SCREEN_HEIGHT = 660;
-    static final int UNIT_WIDTH = 87;
-    static final int UNIT_HEIGHT = 100;
-    static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/(UNIT_WIDTH*UNIT_HEIGHT);
-    static final int DELAY = 75;
-    boolean running = false;
-    Timer timer;
-    Random random;
+    public static final int SCREEN_WIDTH = 1060;
+    public static final int SCREEN_HEIGHT = 660;
+    public static final int UNIT_SIZE = 100;
+    static final int GAME_UNITS = (SCREEN_WIDTH*SCREEN_HEIGHT)/UNIT_SIZE;
 
-    private final JLabel mainLogo;
+//    private final JLabel mainLogo;
     private final JLabel taxPayer;
     private final JLabel nurse;
     private final JLabel doctor;
@@ -24,27 +21,25 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
     private final JLabel back;
     private final JLabel score;
 
-
+    Lockdown_MouseHandler mouseHandler = new Lockdown_MouseHandler();
+    Background bg = new Background(this);
+    Player player = new Player(this,mouseHandler);
     Thread gameThread;
-
+    int FPS = 60;
 
     Lockdown_GamePanel(){
-        random = new Random();
-
-        this.setBounds(0,0,1060,660);
+//        this.setBounds(0,0,1060,660);
+        this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
+        this.setBackground(new Color(3,10,33));
         this.setDoubleBuffered(true);
 
-//        this.setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
-//        this.setBackground(new Color(3,10,33));
-//        this.setBackground(Color.BLACK);
-//        this.setFocusable(true);
-        this.setLayout(null);
-
-        mainLogo = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("Resources/Lockdown_Lawn_exact.png"))));
-        mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
-        mainLogo.setVerticalAlignment(JLabel.VERTICAL);
-        mainLogo.setHorizontalAlignment(JLabel.HORIZONTAL);
-        mainLogo.setVisible(true);
+//        this.setLayout(null);
+//
+//        mainLogo = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/Resources/Lockdown_Lawn_exact.png"))));
+//        mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+//        mainLogo.setVerticalAlignment(JLabel.VERTICAL);
+//        mainLogo.setHorizontalAlignment(JLabel.HORIZONTAL);
+//        mainLogo.setVisible(true);
 
         coins = new JLabel();
         coins.setText(" Coins: " + "10");
@@ -62,7 +57,7 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         back.setForeground(Color.black);
         back.setBackground(Color.white);
         back.setFont(new Font("Cambria", Font.BOLD, 20));
-        back.setBounds(5, 595, 105, 50);
+        back.setBounds(5, 550, 100, 45);
         back.setHorizontalAlignment(SwingConstants.CENTER);
         back.setVerticalAlignment(SwingConstants.CENTER);
         back.setFocusable(false);
@@ -76,7 +71,7 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         score.setForeground(Color.black);
         score.setBackground(Color.white);
         score.setFont(new Font("Cambria", Font.BOLD, 20));
-        score.setBounds(930, 5, 120, 50);
+        score.setBounds(910, 5, 120, 50);
         score.setFocusable(false);
         score.setBorder(BorderFactory.createLineBorder(new Color(236, 189, 57, 255),3));
         score.setOpaque(true);
@@ -92,7 +87,6 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         taxPayer.setBounds(5, 70, 105, 80);
         taxPayer.setFocusable(false);
         taxPayer.setBorder(BorderFactory.createLineBorder(new Color(236, 189, 57, 255),3));
-//        taxPayer.addMouseListener(new MouseListener() {});
         taxPayer.setOpaque(true);
         taxPayer.setVisible(true);
 //        taxPayer.addMouseListener(this);
@@ -107,7 +101,6 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         nurse.setBounds(5, 155, 105, 80);
         nurse.setFocusable(false);
         nurse.setBorder(BorderFactory.createLineBorder(new Color(236, 189, 57, 255),4));
-//        nurse.addMouseListener(new MouseListener() {});
         nurse.setOpaque(true);
         nurse.setVisible(true);
 //        nurse.addMouseListener(this);
@@ -122,7 +115,6 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         doctor.setBounds(5, 240, 105, 80);
         doctor.setFocusable(false);
         doctor.setBorder(BorderFactory.createLineBorder(new Color(236, 189, 57, 255),4));
-//        doctor.addMouseListener(new MouseListener() {});
         doctor.setOpaque(true);
         doctor.setVisible(true);
 //        doctor.addMouseListener(this);
@@ -149,96 +141,21 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
         this.add(taxPayer);
         this.add(soldier);
         this.add(doctor);
-        this.add(nurse);
-        this.add(mainLogo);
-//        this.revalidate();
-//        this.addMouseListener(this);
-        startGame();
+//        this.add(nurse);
+        this.addMouseListener(mouseHandler);
+        this.addMouseMotionListener(mouseHandler);
+        this.setFocusable(true);
     }
 
-    public void startGame(){
-        newInfected();
-        running = true;
-//        timer = new Timer(DELAY,this);
-//        timer.start();
-    }
-
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        draw(g);
-    }
 
     public void draw(Graphics g){
         for (int i = 0; i < 5000; i++){
             g.setColor(Color.blue);
-            g.drawLine(i*UNIT_WIDTH,0,i*UNIT_WIDTH,5000);
+            g.drawLine(i*UNIT_SIZE,0,i*UNIT_SIZE,5000);
             g.setColor(Color.red);
-            g.drawLine(0,i*UNIT_HEIGHT,5000,i*UNIT_HEIGHT);
+            g.drawLine(0,i*UNIT_SIZE,5000,i*UNIT_SIZE);
         }
     }
-
-    public void newInfected(){
-
-    }
-
-    public void move(){
-
-    }
-
-    public void checkInfected(){
-
-    }
-
-    public void checkCollisions(){
-
-    }
-
-    public void gameOver(Graphics g){
-
-    }
-
-
-
-//
-//    @Override
-//    public void mouseClicked(MouseEvent e) {
-//        if(e.getSource()==taxPayer){
-//            System.out.println("PRESSED taxPayer BUTTON");
-//            JLabel label = new JLabel();
-//
-//            label.setText("label");
-//            label.setForeground(Color.black);
-//            label.setBackground(Color.white);
-//            label.setFont(new Font("Cambria", Font.BOLD, 25));
-//            label.setHorizontalAlignment(SwingConstants.CENTER);
-//            label.setVerticalAlignment(SwingConstants.CENTER);
-//            label.setBounds(100, 325, 105, 80);
-//            label.setFocusable(false);
-//            label.setBorder(BorderFactory.createLineBorder(new Color(236, 189, 57, 255),4));
-//            label.setVisible(true);
-//            this.add(label);
-//            this.revalidate();
-////            this.repaint();
-//        }
-//
-//        if(e.getSource()==doctor){
-//            System.out.println("PRESSED doctor BUTTON");
-//        }
-//
-//        if(e.getSource()==nurse){
-//            System.out.println("PRESSED nurse BUTTON");
-//        }
-//
-//        if(e.getSource()==soldier){
-//            System.out.println("PRESSED soldier BUTTON");
-//        }
-//
-//        if(e.getSource()==back){
-//            System.out.println("PRESSED BACK BUTTON");
-//        }
-//
-//    }
-
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
@@ -246,8 +163,47 @@ public class Lockdown_GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
+        double drawInterval = 1000000000/FPS;
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        long timer = 0;
+        int drawCount = 0;
+
         while (gameThread != null){
-            System.out.println("Game Started.");
+
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime) / drawInterval;
+            timer += (currentTime - lastTime);
+            lastTime = currentTime;
+
+
+            if (delta >= 1){
+                update();
+                repaint();
+                delta--;
+                drawCount++;
+            }
+
+
+            if (timer >= 1000000000){
+                System.out.println("FPS: " + drawCount);
+                drawCount = 0;
+                timer = 0;
+            }
         }
+    }
+
+    public void update(){
+        bg.update();
+        player.update();
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        bg.draw(g2);
+        player.draw(g2);
+        g2.dispose();
     }
 }

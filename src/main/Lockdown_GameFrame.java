@@ -1,6 +1,6 @@
-import javax.management.monitor.GaugeMonitor;
+package main;
+
 import javax.swing.*;
-import java.awt.*;
 import java.net.URL;
 
 public class Lockdown_GameFrame extends JFrame{
@@ -11,7 +11,7 @@ public class Lockdown_GameFrame extends JFrame{
 
     Lockdown_GameFrame(){
 
-        URL iconURL = getClass().getResource("Resources/titleIcon.png");
+        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         ImageIcon titleIcon = new ImageIcon(iconURL);
 
         this.setTitle("Let OS Play");

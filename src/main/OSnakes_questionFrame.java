@@ -1,3 +1,5 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -35,7 +37,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     OSnakes_questionFrame () throws URISyntaxException, FileNotFoundException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
-        URL iconURL = getClass().getResource("Resources/titleIcon.png");
+        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
         gamePanel = new OSnakes_gamePanel(this, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -54,19 +56,19 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         pointsLabel.setFont(new Font("Ink Free", Font.BOLD, 35));
         pointsLabel.setFocusable(false);
 
-        JLabel iosLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_iosLogo.png")), JLabel.CENTER);
+        JLabel iosLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_iosLogo.png")), JLabel.CENTER);
         iosLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125), 300,50,30);
         iosLogo.setFocusable(false);
 
-        JLabel windowsLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_windowsLogo.png")), JLabel.CENTER);
+        JLabel windowsLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_windowsLogo.png")), JLabel.CENTER);
         windowsLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),350,50,30);
         windowsLogo.setFocusable(false);
 
-        JLabel ubuntuLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_ubuntuLogo.png")), JLabel.CENTER);
+        JLabel ubuntuLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_ubuntuLogo.png")), JLabel.CENTER);
         ubuntuLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),400,50,30);
         ubuntuLogo.setFocusable(false);
 
-        JLabel linuxLogo = new JLabel(new ImageIcon(getClass().getResource("Resources/OSnakes_linuxLogo.png")), JLabel.CENTER);
+        JLabel linuxLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_linuxLogo.png")), JLabel.CENTER);
         linuxLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),450,50,30);
         linuxLogo.setFocusable(false);
 
@@ -116,7 +118,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         answer1.setFocusable(false);
 
         restartButton = new JButton();
-        restartButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_restartButton.png")));
+        restartButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_restartButton.png")));
         restartButton.setHorizontalAlignment(SwingConstants.CENTER);
         restartButton.setVerticalAlignment(SwingConstants.CENTER);
         restartButton.setBounds(500, 500, 125, 70);
@@ -127,7 +129,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         restartButton.addMouseListener(this);
 
         backButton = new JButton();
-        backButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_backButton.png")));
+        backButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_backButton.png")));
         backButton.setHorizontalAlignment(SwingConstants.CENTER);
         backButton.setVerticalAlignment(SwingConstants.CENTER);
         backButton.setBounds(900, 500, 125, 70);
@@ -254,19 +256,19 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         if(e.getSource()==restartButton){
-            restartButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_restartButtonHL.png")));
+            restartButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_restartButtonHL.png")));
         }
         if(e.getSource()==backButton){
-            backButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_backButtonHL.png")));
+            backButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_backButtonHL.png")));
         }
     }
     @Override
     public void mouseExited(MouseEvent e) {
         if(e.getSource()==restartButton){
-            restartButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_restartButton.png")));
+            restartButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_restartButton.png")));
         }
         if(e.getSource()==backButton){
-            backButton.setIcon(new ImageIcon(getClass().getResource("Resources/OSnakes_backButton.png")));
+            backButton.setIcon(new ImageIcon(getClass().getResource("/Resources/OSnakes_backButton.png")));
         }
     }
 }
