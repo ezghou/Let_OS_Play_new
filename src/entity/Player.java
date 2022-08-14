@@ -11,6 +11,7 @@ import java.io.IOException;
 public class Player extends Entity {
     Lockdown_GamePanel gp;
     Lockdown_MouseHandler mouseHandler;
+    boolean check;
 
     public Player(Lockdown_GamePanel gp, Lockdown_MouseHandler mouseH){
         this.gp = gp;
@@ -31,10 +32,12 @@ public class Player extends Entity {
     public void getPlayerImage() {
         try{
             taxPayer = ImageIO.read(getClass().getResourceAsStream("/Resources/tax.png"));
+            nurse = ImageIO.read(getClass().getResourceAsStream("/Resources/nurse.png"));
+            doctor = ImageIO.read(getClass().getResourceAsStream("/Resources/doctor.png"));
+            soldier = ImageIO.read(getClass().getResourceAsStream("/Resources/soldier.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
-
     }
 
     public void update(){
@@ -43,7 +46,19 @@ public class Player extends Entity {
     }
 
     public void draw(Graphics2D g2){
-        BufferedImage image = taxPayer;
+        BufferedImage image = null;
+        if (mouseHandler.taxPayerCardClicked == true){
+            image = taxPayer;
+        }
+        if (mouseHandler.nurseCardClicked == true){
+            image = nurse;
+        }
+        if (mouseHandler.doctorCardClicked == true){
+            image = doctor;
+        }
+        if (mouseHandler.soldierCardClicked == true){
+            image = soldier;
+        }
         g2.drawImage(image, x-50, y-50, gp.UNIT_SIZE, gp.UNIT_SIZE, null);
     }
 }
