@@ -232,6 +232,129 @@ public class Lockdown_MouseHandler implements MouseListener, MouseMotionListener
             }
 
             //Row 4
+            if((x >= 110 && x <= 210) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 28 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 28;
+                lawnX = 110;
+                lawnY = 410;
+            }
+            if((x >= 210 && x <= 310) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 29 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 29;
+                lawnX = 210;
+                lawnY = 410;
+            }
+            if((x >= 310 && x <= 410) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 30 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 30;
+                lawnX = 310;
+                lawnY = 410;
+            }
+            if((x >= 410 && x <= 510) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 31 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 31;
+                lawnX = 410;
+                lawnY = 410;
+            }
+            if((x >= 500 && x <= 610) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 32 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 32;
+                lawnX = 500;
+                lawnY = 410;
+            }
+            if((x >= 590 && x <= 690) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 33 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 33;
+                lawnX = 590;
+                lawnY = 410;
+            }
+            if((x >= 690 && x <= 790) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 34 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 34;
+                lawnX = 690;
+                lawnY = 410;
+            }
+            if((x >= 790 && x <= 890) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 35 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 35;
+                lawnX = 790;
+                lawnY = 410;
+            }
+            if((x >= 890 && x <= 980) && y >= 400 && y <= 500 ){
+                System.out.println("Lawn 36 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 36;
+                lawnX = 890;
+                lawnY = 410;
+            }
+
+            //Row 5
+            if((x >= 110 && x <= 210) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 37 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 37;
+                lawnX = 110;
+                lawnY = 520;
+            }
+            if((x >= 210 && x <= 310) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 38 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 38;
+                lawnX = 210;
+                lawnY = 520;
+            }
+            if((x >= 305 && x <= 405) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 39 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 39;
+                lawnX = 305;
+                lawnY = 520;
+            }
+            if((x >= 405 && x <= 505) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 40 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 40;
+                lawnX = 405;
+                lawnY = 520;
+            }
+            if((x >= 500 && x <= 600) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 41 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 41;
+                lawnX = 500;
+                lawnY = 520;
+            }
+            if((x >= 600 && x <= 700) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 42 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 42;
+                lawnX = 600;
+                lawnY = 520;
+            }
+            if((x >= 690 && x <= 790) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 43 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 43;
+                lawnX = 690;
+                lawnY = 520;
+            }
+            if((x >= 790 && x <= 890) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 44 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 44;
+                lawnX = 790;
+                lawnY = 520;
+            }
+            if((x >= 890 && x <= 990) && y >= 500 && y <= 600 ){
+                System.out.println("Lawn 45 have BEEN Pressed: X: "  + x + " Y: " + y);
+                lawn = 45;
+                lawnX = 890;
+                lawnY = 520;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             if((x > 115) && y > 88 && y < 621 ){
                 System.out.println("Lawn have BEEN Pressed: X: "  + x + " Y: " + y);

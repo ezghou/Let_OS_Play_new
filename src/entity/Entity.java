@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Entity {
     public int x, y;
+    public int[] gridOccupied = new int[45];
     public int gridNum;
     public int health;
     public int damage;
