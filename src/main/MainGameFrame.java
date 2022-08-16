@@ -89,6 +89,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
             this.add(gamePanel);
             gamePanel.startGameThread();
+            this.pack();
         }
 
 

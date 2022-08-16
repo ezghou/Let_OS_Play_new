@@ -12,7 +12,6 @@ import java.io.IOException;
 public class Cards extends Entity{
     Lockdown_GamePanel gp;
     Lockdown_MouseHandler mouseHandler;
-    JLabel back = new JLabel("Back");
 
     public Cards(Lockdown_GamePanel gp, Lockdown_MouseHandler mouseH){
         this.gp = gp;
