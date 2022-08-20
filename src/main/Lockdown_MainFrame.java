@@ -5,26 +5,33 @@ import main.LockdownGameLogic.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-    @SuppressWarnings("ALL")
+import static main.LockdownGameLogic.Constants.*;
+
+@SuppressWarnings("ALL")
     public class Lockdown_MainFrame extends JFrame implements MouseListener {
 
         private JButton Play;
         private JButton HowToPlayButton;
         private JButton Exit;
         private JLabel mainLogo;
-        int SCREEN_WIDTH = 1060;
-        int SCREEN_HEIGHT = 660;
+
+        private JButton exitButton;
+
+        private GamePanel gamePanel;
 
         Lockdown_MainFrame() {
             URL iconURL = getClass().getResource("/Resources/titleIcon.png");
             assert iconURL != null;
             ImageIcon titleIcon = new ImageIcon(iconURL);
+            Constants.setUp(this);
 
             mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/Lockdown_MainFrame.png")));
             mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
@@ -87,16 +94,37 @@ import java.net.URL;
 
         public Lockdown_MainFrame(int i) throws FileNotFoundException, URISyntaxException {
             this.setTitle("Let OS Play");
-            this.setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            Constants.setUp(this);
+            this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setResizable(false);
             this.setLocationRelativeTo(null); //Center frame in screen
-            GamePanel gamePanel = new GamePanel();
-
+            gamePanel = new GamePanel();
             this.add(gamePanel);
             gamePanel.start();
+            addQuestionsPanel();
+
             this.setVisible(true);
         }
+
+        public void addQuestionsPanel() throws FileNotFoundException, URISyntaxException {
+            //JUST A TEST
+            JPanel secondPanel = new JPanel();
+            secondPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+            secondPanel.setBackground(new Color(41, 31, 31));
+            //TODO : Add exit game
+            exitButton = new JButton();
+            exitButton.setText("Exit Game");
+            exitButton.setHorizontalAlignment(SwingConstants.CENTER);
+            exitButton.setVerticalAlignment(SwingConstants.CENTER);
+            exitButton.setFocusable(false);
+            exitButton.addMouseListener(this);
+            exitButton.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
+            secondPanel.add(exitButton, BorderLayout.WEST);
+            this.add(secondPanel, BorderLayout.SOUTH);
+            Lockdown_QuestionsHandler questionsHandler = new Lockdown_QuestionsHandler(secondPanel);
+        }
+
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -120,6 +148,11 @@ import java.net.URL;
                 this.dispose();
             }
 
+            if(e.getSource()==exitButton){
+                new Lockdown_MainFrame();
+                this.dispose();
+            }
+
 
         }
         @Override
@@ -128,7 +161,6 @@ import java.net.URL;
         public void mouseReleased(MouseEvent e) {}
         @Override
         public void mouseEntered(MouseEvent e) {
-
             if(e.getSource()==Play){
                 Play.setFont(new Font("Cambria", Font.BOLD, 30));
                 Play.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),5));
@@ -163,5 +195,12 @@ import java.net.URL;
             }
 
 
+
         }
+
+    @Override
+    public void dispose() {
+            if(gamePanel != null) gamePanel.dispose();
+            super.dispose();
     }
+}

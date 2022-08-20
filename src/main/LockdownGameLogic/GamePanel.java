@@ -3,6 +3,7 @@ package main.LockdownGameLogic;
 import main.LockdownGameLogic.Entities.Chara;
 import main.LockdownGameLogic.Entities.CharaProjectile;
 import main.LockdownGameLogic.Entities.EnemyChara;
+import main.Lockdown_MainFrame;
 import main.Lockdown_editQuestions;
 import main.TheLadder_editQuestions;
 
@@ -29,25 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
     private ArrayList<EnemyChara> enemyCharas = new ArrayList<>();
     private ArrayList<SelectorHandler> selectors = new ArrayList<>();
 
-    //Var for displaying questions
-    Lockdown_editQuestions editQuestions;
-    ArrayList<String> choiceList = new ArrayList<>();
-    public static String question;
-    public static String correctAnswer;
-    Random random = new Random();
-    public String choice1;
-    public String choice2;
-    public String choice3;
-    public String choice4;
-    public int id;
-    public static int countQs = 0;
-    public int coins = 0;
-    public int score = 0;
-    JTextArea questionText = new JTextArea();
-    JTextArea answer_A = new JTextArea();
-    JTextArea answer_B = new JTextArea();
-    JTextArea answer_C = new JTextArea();
-    JTextArea answer_D = new JTextArea();
+    //Var for displaying question
 
 
     private Thread gameThread;
@@ -58,7 +41,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     private BufferedImage tempImg;
-    public GamePanel() throws FileNotFoundException, URISyntaxException {
+    public GamePanel(){
         setFocusable(true);
         debug = new Debug();
         debug.getSprites(sprites);
@@ -88,43 +71,49 @@ public class GamePanel extends JPanel implements Runnable{
                 mouseX = e.getX();
                 mouseY = e.getY();
 
-                if (!GameOver) {
-                    //SELECTORS
-                    for (SelectorHandler selector : selectors) {
-                        selector.setCollision(mouseX, mouseY);
-                        if (selector.isClicked()) {
-                            globalCharaID = selector.getColumnIndex();
-                        }
+
+                if(GameOver){
+                    dispose();
+                    GamePanel.this.setBackground(Color.WHITE);
+                    repaint();
+                    Thread newThread = new Thread(GamePanel.this);
+                    newThread.start();
+                }
+
+                for (SelectorHandler selector : selectors) {
+                    selector.setCollision(mouseX, mouseY);
+                    if (selector.isClicked()) {
+                        globalCharaID = selector.getColumnIndex();
                     }
+                }
 
-                    ///GRIDS
-                    for (GridHandler grid : grids) {
-                        grid.setCollision(mouseX, mouseY);
-                        if (grid.isClicked()) {
-                            int rowCount = grid.getRowCount();
-                            int columnCount = grid.getColumnCount();
-                            //System.out.println("Row: " + rowCount + "| Column: " + columnCount);
-                            grid.setCollision(false);
+                ///GRIDS
+                for (GridHandler grid : grids) {
+                    grid.setCollision(mouseX, mouseY);
+                    if (grid.isClicked()) {
+                        int rowCount = grid.getRowCount();
+                        int columnCount = grid.getColumnCount();
+                        //System.out.println("Row: " + rowCount + "| Column: " + columnCount);
+                        grid.setCollision(false);
 
-                            if (grid.isOccupied()) {
-                                for (int i = 0; i < charas.size(); i++) {
-                                    if (charas.get(i).getRow() == rowCount && charas.get(i).getColumn() == columnCount && globalCharaID == 3) {
-                                        charas.remove(i);
-                                        grid.setOccupied(false);
-                                        i--;
-                                    }
+                        if (grid.isOccupied()) {
+                            for (int i = 0; i < charas.size(); i++) {
+                                if (charas.get(i).getRow() == rowCount && charas.get(i).getColumn() == columnCount && globalCharaID == 3) {
+                                    charas.remove(i);
+                                    grid.setOccupied(false);
+                                    i--;
                                 }
-                            } else {
-                                if (globalCharaID == 3 || globalCharaID == -1) return;
-                                Chara testCharacter = new Chara(grid.getXcenter(), grid.getYcenter(), globalCharaID);
-                                testCharacter.setRowColumn(rowCount, columnCount);
-                                charas.add(testCharacter);
-                                grid.setOccupied(true);
-                                globalCharaID = -1;
+                            }
+                        } else {
+                            if (globalCharaID == 3 || globalCharaID == -1) return;
+                            Chara testCharacter = new Chara(grid.getXcenter(), grid.getYcenter(), globalCharaID);
+                            testCharacter.setRowColumn(rowCount, columnCount);
+                            charas.add(testCharacter);
+                            grid.setOccupied(true);
+                            globalCharaID = -1;
 
-                                for (SelectorHandler selectorHandler : selectors) {
-                                    selectorHandler.setCollision(false);
-                                }
+                            for (SelectorHandler selectorHandler : selectors) {
+                                selectorHandler.setCollision(false);
                             }
                         }
                     }
@@ -133,74 +122,7 @@ public class GamePanel extends JPanel implements Runnable{
         });
 
 
-        //supposed to be textArea
-        questionText.setBounds(paddingLeft,510,620,170);
-        questionText.setForeground(new Color(230, 244, 251));
-        questionText.setFont(new java.awt.Font("Tunga", 0, 15));
-        questionText.setWrapStyleWord(true);
-        questionText.setLineWrap(true);
-        questionText.setEditable(false);
-        questionText.setOpaque(false);
-        questionText.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),2));
 
-        this.add(questionText);
-        editQuestions = new Lockdown_editQuestions();
-        getQuestions(); //setInitial question
-    }
-
-    /**
-     * Method for setting initial question, need to be called to set new question
-     * @throws URISyntaxException
-     * @throws FileNotFoundException
-     */
-    public final void getQuestions() throws URISyntaxException, FileNotFoundException {
-        editQuestions.getQuestion();
-        question = editQuestions.question;
-        id = editQuestions.question_id;
-        setQuestion();
-        setChoices();
-    }
-
-    public final void setQuestion(){
-        countQs++;
-        System.out.println("countQs: " + countQs);
-        question = question.replace("\n", " ").replace("\r", " ");
-        questionText.setText(question + "\n \n"); //Set question in textarea
-        correctAnswer = editQuestions.CorrectAnswer;
-        System.out.println(question);
-        System.out.println(correctAnswer);
-    }
-    public final void setChoices(){
-        choice1 = editQuestions.firstChoice;
-        choice2 = editQuestions.secondChoice;
-        choice3 = editQuestions.thirdChoice;
-        choice4 = editQuestions.fourthChoice;
-        choiceList.add(choice1);
-        choiceList.add(choice2);
-        choiceList.add(choice3);
-        choiceList.add(choice4);
-        int size;
-        int index;
-        System.out.println(choice1);
-        System.out.println(choice2);
-        System.out.println(choice3);
-        System.out.println(choice4);
-
-        for(size = choiceList.size(); size > 0; size--){
-            index = random.nextInt(size);
-            switch (size) {
-                case 4 -> choice1 = choiceList.get(index);
-                case 3 -> choice2 = choiceList.get(index);
-                case 2 -> choice3 = choiceList.get(index);
-                case 1 -> choice4 = choiceList.get(index);
-                default -> { }
-            }
-            choiceList.remove(index);
-        }
-        answer_A.setText(choice1); //set choice in textarea
-        answer_B.setText(choice2); //set choice in textarea
-        answer_C.setText(choice3); //set choice in textarea
-        answer_D.setText(choice4); //set choice in textarea
     }
 
 
@@ -324,11 +246,23 @@ public class GamePanel extends JPanel implements Runnable{
             }
         }
 
+        repaint();
+        this.setBackground(Color.BLACK);
         System.out.println("GAME OVER!!!");
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        if(GameOver){
+            String text = "GAME OVER";
+            String retryText = "Click Screen to Retry";
+            g.setColor(Color.red);
+            g.drawString(text, SCREEN_WIDTH/2 - g.getFontMetrics().stringWidth(text) / 2, SCREEN_HEIGHT/2 - g.getFontMetrics().getHeight() / 2);
+            g.setColor(Color.WHITE);
+            g.drawString(retryText, SCREEN_WIDTH/2 - g.getFontMetrics().stringWidth(retryText)/2, SCREEN_HEIGHT/2 + g.getFontMetrics().getHeight());
+            return;
+        }
+
         drawGrid(g);
         for (Chara chara : charas) {
             chara.render(g);
@@ -339,7 +273,6 @@ public class GamePanel extends JPanel implements Runnable{
         }
         //SELECTORS
         drawSelector(g);
-
     }
 
 

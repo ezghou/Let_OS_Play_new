@@ -1,5 +1,6 @@
 package main.LockdownGameLogic;
 
+import main.Lockdown_MainFrame;
 import main.MainGameFrame;
 
 import javax.imageio.ImageIO;
@@ -43,14 +44,14 @@ public class Constants {
     public static BufferedImage SickDude;
     public static BufferedImage testFieldMiddle;
     public static BufferedImage testFieldBottom;
-    public static MainGameFrame mgf;
+    public static Lockdown_MainFrame mgf;
     public static int mouseX, mouseY;
     public static int globalCharaID = -1;
     public static int col1EnemCount = 0,
             col2EnemCount = 0, col3EnemCount = 0,
             col4EnemCount = 0, col5EnemCount = 0;
 
-    public static void setUp(MainGameFrame mgf){
+    public static void setUp(Lockdown_MainFrame mgf){
         Constants.mgf = mgf;
 
         try{

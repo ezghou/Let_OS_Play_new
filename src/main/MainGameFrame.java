@@ -30,7 +30,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
-        Constants.setUp(this);
+        //Constants.setUp(this);
 
         logo = new JLabel(new ImageIcon(getClass().getResource("/Resources/LogoSmall.png")));
         logo.setVerticalAlignment(JLabel.CENTER);
@@ -78,7 +78,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-        new SplashScreen();
+        //new SplashScreen();
+        new MainGameFrame();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
