@@ -40,6 +40,7 @@ public class Lockdown_editQuestions {
     }
 
     public final void getQuestion() throws URISyntaxException, FileNotFoundException {
+        /*
         if(questions.isEmpty()){
             JOptionPane.showMessageDialog(null, "THERE ARE NO Questions TO ASK.");
         }
@@ -74,6 +75,15 @@ public class Lockdown_editQuestions {
                 }
             }
         }
+        */
+
+        question_id = random.nextInt(questionSize);
+        choice_id = question_id;
+        question = questions.get(choice_id);
+        askedQuestions.add(question);
+
+        CorrectAnswer = correctAnswer.get(choice_id);
+        getChoices();
     }
     public void getChoices(){
         firstChoice = choice1.get(choice_id);
