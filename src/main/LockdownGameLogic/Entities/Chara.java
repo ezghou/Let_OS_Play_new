@@ -33,21 +33,23 @@ public class Chara {
     public Chara(int x, int y, int id){
         this.id = id;
         switch (id) {
+            /*
             case 0 -> {
                 img = taxPayer;
                 health = 8;
             }
-            case 1 -> {
+            */
+            case 0 -> {
                 img = nurse;
                 damage = 1;
                 health = 6;
             }
-            case 2 -> {
+            case 1 -> {
                 img = doctor;
                 damage = 2;
                 health = 8;
             }
-            case 3 -> {
+            case 2 -> {
                 img = soldier;
                 health = 15;
             }
@@ -104,7 +106,7 @@ public class Chara {
     }
 
     public void update(){
-        if(id == 1 || id == 2) {
+        if(id == 0 || id == 1) {
             int targets = 0;
             switch (column){
                 case 1 -> targets = col1EnemCount;
@@ -115,14 +117,14 @@ public class Chara {
             }
             debug1.countSeconds();
             switch (id){
-                case 1 -> {
+                case 0 -> {
                     if (debug1.elapsedTimeInSecond >= 1.8 && targets != 0) {
                         debug1.resetTime();
                         charaProjectiles.add(new CharaProjectile(this, 35, 10, 8));
                     }
                 }
 
-                case 2 -> {
+                case 1 -> {
                     if (debug1.elapsedTimeInSecond >= 2.5 && targets != 0) {
                         debug1.resetTime();
                         charaProjectiles.add(new CharaProjectile(this, 35, 10, 8));
