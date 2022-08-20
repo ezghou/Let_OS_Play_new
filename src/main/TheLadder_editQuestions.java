@@ -40,7 +40,7 @@ import java.util.Random;
 
         public final void getQuestion() throws URISyntaxException, FileNotFoundException {
             if(questions.isEmpty()){
-                JOptionPane.showMessageDialog(null, "There are NO Questions to Ask");
+                JOptionPane.showMessageDialog(null, "THERE ARE NO Questions TO ASK.");
                 new TheLadder_Quiz();
                 questionFrame.dispose();
             }

@@ -65,8 +65,6 @@ import java.util.logging.Logger;
         public int coins = 0;
         public int score = 0;
 
-
-
         TheLadder_Quiz() throws FileNotFoundException, URISyntaxException {
             int SCREEN_WIDTH = 1060;
             int SCREEN_HEIGHT = 660;
@@ -323,15 +321,15 @@ import java.util.logging.Logger;
         id = editQuestions.question_id;
         setQuestion();
         setChoices();
-        //questionCount++;
     }
 
     public final void setQuestion(){
         countQs++;
         System.out.println("countQs: " + countQs);
+        question = question.replace("\n", " ").replace("\r", " ");
         questionText.setText(question + "\n \n");
         correctAnswer = editQuestions.CorrectAnswer;
-        //answer1.setText(correctAnswer);
+        System.out.println(question);
         System.out.println(correctAnswer);
     }
 
@@ -640,11 +638,13 @@ import java.util.logging.Logger;
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == Peek) {
+            click.soundChoice(4);
             peek();
         }
 
         if (e.getSource() == Skip) {
             try {
+                click.soundChoice(4);
                 skip();
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
@@ -654,6 +654,7 @@ import java.util.logging.Logger;
         }
 
         if (e.getSource() == Reveal) {
+            click.soundChoice(4);
             reveal();
         }
 
@@ -672,6 +673,7 @@ import java.util.logging.Logger;
         }
 
         if (e.getSource() == ViewResult) {
+            click.soundChoice(4);
             if(score > 17) {
                 new TheLadder_WinFrame(score);
                 this.dispose();
@@ -683,8 +685,9 @@ import java.util.logging.Logger;
         }
 
         if (e.getSource() == Back) {
+            click.soundChoice(4);
             countQs = 0;
-            new TheLadder_MainFrame();
+            MainGameFrame.theLadder_mainFrame.setVisible(true);
             this.dispose();
         }
 

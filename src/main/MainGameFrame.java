@@ -10,13 +10,18 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @SuppressWarnings("ALL")
 public class MainGameFrame extends JFrame implements ActionListener {
+    public static  TheLadder_MainFrame theLadder_mainFrame;
     JLabel logo;
     JButton selectLadder;
     JButton selectLockdown;
     JButton selectOSNAKES;
+    Sounds click = new Sounds();
+    Sounds musicTheLadder = new Sounds();
 
     MainGameFrame() {
         int SCREEN_WIDTH = 1060;
@@ -75,13 +80,14 @@ public class MainGameFrame extends JFrame implements ActionListener {
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
         new SplashScreen();
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == selectLadder) {
             try {
+                click.soundChoice(4);
                 new TheLadder_splashFrame();
+                theLadder_mainFrame = new TheLadder_MainFrame();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
@@ -90,6 +96,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
         if (e.getSource() == selectLockdown) {
             try {
+                click.soundChoice(4);
                 new Lockdown_SplashScreen();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();

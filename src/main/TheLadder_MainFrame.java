@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @SuppressWarnings("ALL")
 public class TheLadder_MainFrame extends JFrame implements MouseListener {
@@ -12,8 +16,11 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
     private final JButton ApplyNow;
     private final JButton HowToPlayButton;
     private final JButton Exit;
+    Sounds music = new Sounds();
+    Sounds buttonClick = new Sounds();
 
-    TheLadder_MainFrame() {
+
+    TheLadder_MainFrame() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -67,7 +74,9 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         Exit.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
         //Exit.setFocusPainted(false);
         Exit.addMouseListener(this);
-        
+
+        music();
+
         this.setTitle("Let OS Play");
         this.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
         this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -76,7 +85,7 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         this.setIconImage(titleIcon.getImage());
         this.getContentPane().setBackground(new Color(3,10,33));
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        this.setVisible(false);
 
         this.getContentPane().add(ApplyNow);
         this.getContentPane().add(HowToPlayButton);
@@ -84,18 +93,38 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         this.getContentPane().add(mainLogo);
     }
 
+    public void music(){
+        try {
+            music.soundChoice(1);
+        } catch (Exception e) {
+            Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        music.playLoop();
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 
         if(e.getSource()==ApplyNow){
-            new TheLadder_ApplicationForm();
+            try {
+                buttonClick.soundChoice(4);
+                new TheLadder_Quiz();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            } catch (URISyntaxException ex) {
+                throw new RuntimeException(ex);
+            }
             this.dispose();
         }
         if(e.getSource()==HowToPlayButton){
+            buttonClick.soundChoice(4);
             new TheLadder_HowToPlayFrame();
             this.dispose();
         }
         if(e.getSource()==Exit){
+            buttonClick.soundChoice(4);
+            MainGameFrame.theLadder_mainFrame.music.stop();
             new MainGameFrame();
             this.dispose();
         }
@@ -141,7 +170,5 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
             Exit.setFont(new Font("Cambria", Font.BOLD, 25));
             Exit.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
         }
-
-
     }
 }

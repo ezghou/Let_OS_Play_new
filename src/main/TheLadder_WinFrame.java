@@ -10,9 +10,9 @@ import java.net.URL;
     public class TheLadder_WinFrame extends JFrame implements MouseListener {
         JLabel mainLogo;
         JButton backButton;
-        JButton Home;
         JTextField Score;
         JTextField Congrats;
+        Sounds buttonClick = new Sounds();
 
         TheLadder_WinFrame(int score) {
             int SCREEN_WIDTH = 1060;
@@ -38,19 +38,6 @@ import java.net.URL;
             backButton.setFocusable(false);
             backButton.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
             backButton.addMouseListener(this);
-
-            Home = new JButton();
-            Home.setText("Home");
-            Home.setForeground(new Color(230, 244, 251));
-            Home.setBackground(new Color(17, 71, 90));
-            Home.setFont(new Font("Cambria", Font.BOLD, 20));
-            Home.setHorizontalAlignment(SwingConstants.CENTER);
-            Home.setVerticalAlignment(SwingConstants.CENTER);
-            Home.setBounds(870, 550, 150, 40);
-            Home.setContentAreaFilled(false);
-            Home.setFocusable(false);
-            Home.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-            Home.addMouseListener(this);
 
             Score = new JTextField("Score: " + score + "/30");
             Score.setBounds(300, 207, 800, 35);
@@ -79,7 +66,6 @@ import java.net.URL;
             this.setVisible(true);
 
             this.getContentPane().add(backButton);
-            this.getContentPane().add(Home);
             this.getContentPane().add(Congrats);
             this.getContentPane().add(Score);
             this.getContentPane().add(mainLogo);
@@ -88,11 +74,8 @@ import java.net.URL;
         @Override
         public void mouseClicked(MouseEvent e) {
             if(e.getSource() == backButton){
-                new TheLadder_MainFrame();
-                this.dispose();
-            }
-            if(e.getSource() == Home){
-                new MainGameFrame();
+                buttonClick.soundChoice(4);
+                MainGameFrame.theLadder_mainFrame.setVisible(true);
                 this.dispose();
             }
         }

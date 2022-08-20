@@ -10,6 +10,7 @@ import java.net.URL;
     public class TheLadder_HowToPlayFrame extends JFrame implements MouseListener {
         JLabel mainLogo;
         JButton backButton;
+        Sounds buttonClick = new Sounds();
 
         TheLadder_HowToPlayFrame() {
             int SCREEN_WIDTH = 1060;
@@ -53,13 +54,12 @@ import java.net.URL;
 
         @Override
         public void mouseClicked(MouseEvent e) {
-            new TheLadder_MainFrame();
+            buttonClick.soundChoice(4);
+            MainGameFrame.theLadder_mainFrame.setVisible(true);
             this.dispose();
         }
         @Override
         public void mousePressed(MouseEvent e) {
-            new TheLadder_MainFrame();
-            this.dispose();
         }
         @Override
         public void mouseReleased(MouseEvent e) {
