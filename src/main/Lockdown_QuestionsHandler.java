@@ -1,5 +1,7 @@
 package main;
 
+import main.LockdownGameLogic.Debug;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -23,16 +25,16 @@ public class Lockdown_QuestionsHandler implements Runnable {
     public String choice4;
     public int id;
     public static int countQs = 0;
-    public int coins = 0;
-    public int timeAlive = 0;
     JTextArea questionText = new JTextArea();
     JTextArea answer_A = new JTextArea();
     JTextArea answer_B = new JTextArea();
     JTextArea answer_C = new JTextArea();
     JTextArea answer_D = new JTextArea();
 
-    private JPanel parent;
+    JTextArea coinsText = new JTextArea();
+
     private final Thread questionThread;
+    private final Debug questionTimerRefresh = new Debug();
 
     public Lockdown_QuestionsHandler(JPanel parent) throws FileNotFoundException, URISyntaxException {
 
@@ -40,7 +42,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
          * All child components should be added in the third panel
          * then the third panel is added to the parent panel.
          */
-        this.parent = parent;
         JPanel thirdPanel = new JPanel();
         thirdPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
         //thirdPanel.setLayout(new GridLayout(3, 1));
@@ -68,6 +69,17 @@ public class Lockdown_QuestionsHandler implements Runnable {
         setupChoices(answer_C);
         setupChoices(answer_D);
 
+        coinsText.setText("Coins : 100");
+        coinsText.setForeground(new Color(108, 202, 255));
+        coinsText.setFont(new java.awt.Font("Tunga", 0, 15));
+        coinsText.setWrapStyleWord(true);
+        coinsText.setLineWrap(true);
+        coinsText.setEditable(false);
+        coinsText.setOpaque(false);
+        coinsText.setHighlighter(null);
+        coinsText.setBorder(BorderFactory.createLineBorder(new Color(128, 0, 0),3));
+        coinsText.setLayout(new BorderLayout());
+
         thirdPanel.add(questionText);
         fourthPanel.add(answer_A);
         fourthPanel.add(answer_B);
@@ -75,10 +87,13 @@ public class Lockdown_QuestionsHandler implements Runnable {
         fourthPanel.add(answer_D);
         thirdPanel.add(fourthPanel);
 
+
+
         editQuestions = new Lockdown_editQuestions();
         getQuestions(); //setInitial question
 
         parent.add(thirdPanel);
+        parent.add(coinsText);
     }
     /**
      * Method for setting initial question, need to be called to set new question
@@ -156,7 +171,7 @@ public class Lockdown_QuestionsHandler implements Runnable {
                 jTextArea.setForeground(new Color(207, 54, 66));
                 if (changeQuestion)return;
                 if (jTextArea.getText().equals(correctAnswer)){
-                    coins += 100;
+                    Coins += 100;
                     questionText.setBackground(Color.green);
                     return;
                 }
@@ -182,9 +197,11 @@ public class Lockdown_QuestionsHandler implements Runnable {
     @Override
     public void run() {
         while(!GameOver){
-            globalDebug.countSeconds();
-            if (globalDebug.elapsedTimeInSecond >= 8 && changeQuestion) {
-                globalDebug.resetTime();
+            questionTimerRefresh.countSeconds();
+            String c = "Coins : " + Coins;
+            coinsText.setText(c);
+            if (questionTimerRefresh.elapsedTimeInSecond >= 8 && changeQuestion) {
+                questionTimerRefresh.resetTime();
                 changeQuestion = false;
                 try {
                     getQuestions();

@@ -80,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable{
                     newThread.start();
                 }
 
+                //SELECTOR
                 for (SelectorHandler selector : selectors) {
                     selector.setCollision(mouseX, mouseY);
                     if (selector.isClicked()) {
@@ -99,6 +100,7 @@ public class GamePanel extends JPanel implements Runnable{
                         if (grid.isOccupied()) {
                             for (int i = 0; i < charas.size(); i++) {
                                 if (charas.get(i).getRow() == rowCount && charas.get(i).getColumn() == columnCount && globalCharaID == 3) {
+                                    Coins += selectors.get(charas.get(i).getId()).cost;
                                     charas.remove(i);
                                     grid.setOccupied(false);
                                     i--;
@@ -106,6 +108,11 @@ public class GamePanel extends JPanel implements Runnable{
                             }
                         } else {
                             if (globalCharaID == 3 || globalCharaID == -1) return;
+                            if(selectors.get(globalCharaID).cost > Coins) {
+                                System.out.println("NOT ENOUGH COINS");
+                                return;
+                            }
+                            Coins -= selectors.get(globalCharaID).cost;
                             Chara testCharacter = new Chara(grid.getXcenter(), grid.getYcenter(), globalCharaID);
                             testCharacter.setRowColumn(rowCount, columnCount);
                             charas.add(testCharacter);
@@ -277,9 +284,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     public void update(){
-
-        if(countGlobalTime) globalDebug.countSeconds();
-
+        globalDebug.countSeconds();
         try {
             for (Chara chara : charas) {
                 chara.update();
@@ -429,5 +434,6 @@ public class GamePanel extends JPanel implements Runnable{
             gridHandler.setOccupied(false);
         }
         GameOver = false;
+        Coins = 50;
     }
 }

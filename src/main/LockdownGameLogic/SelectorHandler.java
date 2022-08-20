@@ -6,9 +6,16 @@ public class SelectorHandler {
     private int Xcenter, Ycenter;
     private int rx, ry;
     private boolean isClicked = false;
+    public int cost;
 
     public SelectorHandler(int columnIndex){
         this.columnIndex = columnIndex;
+        switch (columnIndex){
+            case 0 -> cost = 50;
+            case 1 -> cost = 100;
+            case 2 -> cost = 75;
+            default -> cost = 0;
+        }
         setVariables();
     }
 

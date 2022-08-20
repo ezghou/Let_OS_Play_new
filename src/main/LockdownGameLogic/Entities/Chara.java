@@ -28,6 +28,8 @@ public class Chara {
     private Debug debug2 = new Debug();
     public int health, damage;
 
+    private int cost;
+
 
 
     public Chara(int x, int y, int id){

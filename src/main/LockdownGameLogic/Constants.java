@@ -54,6 +54,8 @@ public class Constants {
             col2EnemCount = 0, col3EnemCount = 0,
             col4EnemCount = 0, col5EnemCount = 0;
 
+    public static int Coins = 50;
+
     public static void setUp(Lockdown_MainFrame mgf){
         Constants.mgf = mgf;
 
