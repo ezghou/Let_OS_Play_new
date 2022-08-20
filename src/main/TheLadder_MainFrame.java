@@ -96,7 +96,7 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
             this.dispose();
         }
         if(e.getSource()==Exit){
-            new MainGameFrame(false);
+            new MainGameFrame();
             this.dispose();
         }
 

@@ -28,7 +28,7 @@ public class SplashScreen extends JFrame {
         this.getContentPane().add(logo);
 
         Thread.sleep(3000);
-        new MainGameFrame(false);
+        new MainGameFrame();
         this.dispose();
     }
 }

@@ -1,5 +1,8 @@
 package main;
 
+import main.LockdownGameLogic.Constants;
+import main.LockdownGameLogic.GamePanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -9,10 +12,10 @@ import java.net.URL;
     @SuppressWarnings("ALL")
     public class Lockdown_MainFrame extends JFrame implements MouseListener {
 
-        private final JButton Play;
-        private final JButton HowToPlayButton;
-        private final JButton Exit;
-        private final JLabel mainLogo;
+        private JButton Play;
+        private JButton HowToPlayButton;
+        private JButton Exit;
+        private JLabel mainLogo;
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
 
@@ -79,11 +82,25 @@ import java.net.URL;
             this.getContentPane().add(mainLogo);
         }
 
+
+        public Lockdown_MainFrame(int i){
+            this.setTitle("Let OS Play");
+            this.setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.setResizable(false);
+            this.setLocationRelativeTo(null); //Center frame in screen
+            GamePanel gamePanel = new GamePanel();
+
+            this.add(gamePanel);
+            gamePanel.start();
+            this.setVisible(true);
+        }
+
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if(e.getSource()==Play){
-                new MainGameFrame(true);
+                new Lockdown_MainFrame(1);
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
@@ -91,7 +108,7 @@ import java.net.URL;
                 this.dispose();
             }
             if(e.getSource()==Exit){
-                new MainGameFrame(false);
+                new MainGameFrame();
                 this.dispose();
             }
 
