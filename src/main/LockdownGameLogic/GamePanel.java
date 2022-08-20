@@ -3,12 +3,17 @@ package main.LockdownGameLogic;
 import main.LockdownGameLogic.Entities.Chara;
 import main.LockdownGameLogic.Entities.CharaProjectile;
 import main.LockdownGameLogic.Entities.EnemyChara;
+import main.Lockdown_editQuestions;
+import main.TheLadder_editQuestions;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import static main.LockdownGameLogic.Constants.*;
 
@@ -23,6 +28,28 @@ public class GamePanel extends JPanel implements Runnable{
     private ArrayList<Chara> charas = new ArrayList<>();
     private ArrayList<EnemyChara> enemyCharas = new ArrayList<>();
     private ArrayList<SelectorHandler> selectors = new ArrayList<>();
+
+    //Var for displaying questions
+    Lockdown_editQuestions editQuestions;
+    ArrayList<String> choiceList = new ArrayList<>();
+    public static String question;
+    public static String correctAnswer;
+    Random random = new Random();
+    public String choice1;
+    public String choice2;
+    public String choice3;
+    public String choice4;
+    public int id;
+    public static int countQs = 0;
+    public int coins = 0;
+    public int score = 0;
+    JTextArea questionText = new JTextArea();
+    JTextArea answer_A = new JTextArea();
+    JTextArea answer_B = new JTextArea();
+    JTextArea answer_C = new JTextArea();
+    JTextArea answer_D = new JTextArea();
+
+
     private Thread gameThread;
     private Debug debug;
     private Debug spawnerDebug, spawnerDebug2, waveDebug;
@@ -31,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     private BufferedImage tempImg;
-    public GamePanel(){
+    public GamePanel() throws FileNotFoundException, URISyntaxException {
         setFocusable(true);
         debug = new Debug();
         debug.getSprites(sprites);
@@ -104,7 +131,78 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         });
+
+
+        //supposed to be textArea
+        questionText.setBounds(paddingLeft,510,620,170);
+        questionText.setForeground(new Color(230, 244, 251));
+        questionText.setFont(new java.awt.Font("Tunga", 0, 15));
+        questionText.setWrapStyleWord(true);
+        questionText.setLineWrap(true);
+        questionText.setEditable(false);
+        questionText.setOpaque(false);
+        questionText.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),2));
+
+        this.add(questionText);
+        editQuestions = new Lockdown_editQuestions();
+        getQuestions(); //setInitial question
     }
+
+    /**
+     * Method for setting initial question, need to be called to set new question
+     * @throws URISyntaxException
+     * @throws FileNotFoundException
+     */
+    public final void getQuestions() throws URISyntaxException, FileNotFoundException {
+        editQuestions.getQuestion();
+        question = editQuestions.question;
+        id = editQuestions.question_id;
+        setQuestion();
+        setChoices();
+    }
+
+    public final void setQuestion(){
+        countQs++;
+        System.out.println("countQs: " + countQs);
+        question = question.replace("\n", " ").replace("\r", " ");
+        questionText.setText(question + "\n \n"); //Set question in textarea
+        correctAnswer = editQuestions.CorrectAnswer;
+        System.out.println(question);
+        System.out.println(correctAnswer);
+    }
+    public final void setChoices(){
+        choice1 = editQuestions.firstChoice;
+        choice2 = editQuestions.secondChoice;
+        choice3 = editQuestions.thirdChoice;
+        choice4 = editQuestions.fourthChoice;
+        choiceList.add(choice1);
+        choiceList.add(choice2);
+        choiceList.add(choice3);
+        choiceList.add(choice4);
+        int size;
+        int index;
+        System.out.println(choice1);
+        System.out.println(choice2);
+        System.out.println(choice3);
+        System.out.println(choice4);
+
+        for(size = choiceList.size(); size > 0; size--){
+            index = random.nextInt(size);
+            switch (size) {
+                case 4 -> choice1 = choiceList.get(index);
+                case 3 -> choice2 = choiceList.get(index);
+                case 2 -> choice3 = choiceList.get(index);
+                case 1 -> choice4 = choiceList.get(index);
+                default -> { }
+            }
+            choiceList.remove(index);
+        }
+        answer_A.setText(choice1); //set choice in textarea
+        answer_B.setText(choice2); //set choice in textarea
+        answer_C.setText(choice3); //set choice in textarea
+        answer_D.setText(choice4); //set choice in textarea
+    }
+
 
     private void enemySpawnerViaKey(){
         addKeyListener(new KeyAdapter() {

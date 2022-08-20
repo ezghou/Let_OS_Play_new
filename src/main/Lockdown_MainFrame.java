@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.net.URL;
 
     @SuppressWarnings("ALL")
@@ -83,7 +85,7 @@ import java.net.URL;
         }
 
 
-        public Lockdown_MainFrame(int i){
+        public Lockdown_MainFrame(int i) throws FileNotFoundException, URISyntaxException {
             this.setTitle("Let OS Play");
             this.setSize(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,7 +102,13 @@ import java.net.URL;
         public void mouseClicked(MouseEvent e) {
 
             if(e.getSource()==Play){
-                new Lockdown_MainFrame(1);
+                try {
+                    new Lockdown_MainFrame(1);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (URISyntaxException ex) {
+                    throw new RuntimeException(ex);
+                }
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
