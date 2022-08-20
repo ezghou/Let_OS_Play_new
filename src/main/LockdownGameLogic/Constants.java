@@ -30,6 +30,9 @@ public class Constants {
     public static final int gridHeight = lawnHeight /gridColumnCount;
     public static final int selectorPaddingLeft =  40;
 
+    public static final Debug globalDebug = new Debug();
+    public static boolean countGlobalTime = false;
+
 
 
     //NOT SO CONSTANT VARIABLES

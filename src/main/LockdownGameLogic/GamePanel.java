@@ -278,6 +278,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update(){
 
+        if(countGlobalTime) globalDebug.countSeconds();
+
         try {
             for (Chara chara : charas) {
                 chara.update();
@@ -409,6 +411,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void dispose(){
+        globalDebug.resetTime();
         enemyCharas.clear();
         charas.clear();
         spawnerDebug.resetTime();

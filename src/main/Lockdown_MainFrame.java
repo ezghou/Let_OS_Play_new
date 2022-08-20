@@ -112,7 +112,7 @@ import static main.LockdownGameLogic.Constants.*;
             JPanel secondPanel = new JPanel();
             secondPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
             secondPanel.setBackground(new Color(41, 31, 31));
-            //TODO : Add exit game
+
             exitButton = new JButton();
             exitButton.setText("Exit Game");
             exitButton.setHorizontalAlignment(SwingConstants.CENTER);
@@ -123,6 +123,8 @@ import static main.LockdownGameLogic.Constants.*;
             secondPanel.add(exitButton, BorderLayout.WEST);
             this.add(secondPanel, BorderLayout.SOUTH);
             Lockdown_QuestionsHandler questionsHandler = new Lockdown_QuestionsHandler(secondPanel);
+
+            questionsHandler.start();
         }
 
 
