@@ -196,7 +196,7 @@ public class GamePanel extends JPanel implements Runnable{
                     case 5 -> col5EnemCount++;
                 }
             }
-            System.out.println("WAVE");
+            //System.out.println("WAVE");
         }
 
         if(spawnerDebug2.elapsedTimeInSecond >= timeSpawn){
@@ -263,10 +263,13 @@ public class GamePanel extends JPanel implements Runnable{
         if(GameOver){
             String text = "GAME OVER";
             String retryText = "Click Screen to Retry";
+            String Time = "Time Alive : " + globalDebug.returnSeconds() + " seconds";
+            float y = SCREEN_HEIGHT/2f + g.getFontMetrics().getHeight() * 4;
             g.setColor(Color.red);
             g.drawString(text, SCREEN_WIDTH/2 - g.getFontMetrics().stringWidth(text) / 2, SCREEN_HEIGHT/2 - g.getFontMetrics().getHeight() / 2);
             g.setColor(Color.WHITE);
             g.drawString(retryText, SCREEN_WIDTH/2 - g.getFontMetrics().stringWidth(retryText)/2, SCREEN_HEIGHT/2 + g.getFontMetrics().getHeight());
+            g.drawString(Time, SCREEN_WIDTH/2 - g.getFontMetrics().stringWidth(Time)/2, (int) y);
             return;
         }
 

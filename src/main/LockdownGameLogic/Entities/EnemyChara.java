@@ -44,7 +44,7 @@ public class EnemyChara {
     }
 
     public void updatePosition(){
-        positionX -= 0.4;
+        positionX -= enemyMovementSpeed;
     }
 
     public void render(Graphics g){

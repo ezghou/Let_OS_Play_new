@@ -20,7 +20,7 @@ public class Constants {
     //public static final int paddingTop = 100;
     public static final int paddingTop = 20;
     //public static final int paddingBottom = 30;
-    public static final int paddingBottom = 110;
+    public static final int paddingBottom = 180;
     public static final int estTitleHeight = 40;
     public static final int gridRowCount = 9;
     public static final int gridColumnCount = 5;
@@ -30,8 +30,8 @@ public class Constants {
     public static final int gridHeight = lawnHeight /gridColumnCount;
     public static final int selectorPaddingLeft =  40;
 
+    public static final float enemyMovementSpeed = 0.4f;
     public static final Debug globalDebug = new Debug();
-    public static boolean countGlobalTime = false;
 
 
 

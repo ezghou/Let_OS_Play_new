@@ -33,6 +33,8 @@ public class Lockdown_QuestionsHandler implements Runnable {
 
     JTextArea coinsText = new JTextArea();
 
+    JTextArea timeAlive = new JTextArea();
+
     private final Thread questionThread;
     private final Debug questionTimerRefresh = new Debug();
 
@@ -64,6 +66,11 @@ public class Lockdown_QuestionsHandler implements Runnable {
         fourthPanel.setLayout(new GridLayout(2, 2 , 10, 5));
         fourthPanel.setBackground(Color.BLACK);
 
+
+        JPanel fifthPanel = new JPanel();
+        fifthPanel.setLayout(new GridLayout(2, 1 , 10, 5));
+        fifthPanel.setBackground(new Color(28, 8, 9));
+
         setupChoices(answer_A);
         setupChoices(answer_B);
         setupChoices(answer_C);
@@ -80,12 +87,25 @@ public class Lockdown_QuestionsHandler implements Runnable {
         coinsText.setBorder(BorderFactory.createLineBorder(new Color(128, 0, 0),3));
         coinsText.setLayout(new BorderLayout());
 
+        timeAlive.setText("Time Alive : 0");
+        timeAlive.setForeground(new Color(108, 202, 255));
+        timeAlive.setFont(new java.awt.Font("Tunga", 0, 15));
+        timeAlive.setWrapStyleWord(true);
+        timeAlive.setLineWrap(true);
+        timeAlive.setEditable(false);
+        timeAlive.setOpaque(false);
+        timeAlive.setHighlighter(null);
+        timeAlive.setBorder(BorderFactory.createLineBorder(new Color(128, 0, 0),3));
+        timeAlive.setLayout(new BorderLayout());
+
         thirdPanel.add(questionText);
         fourthPanel.add(answer_A);
         fourthPanel.add(answer_B);
         fourthPanel.add(answer_C);
         fourthPanel.add(answer_D);
         thirdPanel.add(fourthPanel);
+        fifthPanel.add(coinsText);
+        fifthPanel.add(timeAlive);
 
 
 
@@ -93,7 +113,7 @@ public class Lockdown_QuestionsHandler implements Runnable {
         getQuestions(); //setInitial question
 
         parent.add(thirdPanel);
-        parent.add(coinsText);
+        parent.add(fifthPanel);
     }
     /**
      * Method for setting initial question, need to be called to set new question
@@ -199,7 +219,9 @@ public class Lockdown_QuestionsHandler implements Runnable {
         while(!GameOver){
             questionTimerRefresh.countSeconds();
             String c = "Coins : " + Coins;
+            String t = "Time Alive : " + globalDebug.returnSeconds() + " seconds";
             coinsText.setText(c);
+            timeAlive.setText(t);
             if (questionTimerRefresh.elapsedTimeInSecond >= 8 && changeQuestion) {
                 questionTimerRefresh.resetTime();
                 changeQuestion = false;
