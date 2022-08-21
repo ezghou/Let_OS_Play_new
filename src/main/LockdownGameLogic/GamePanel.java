@@ -421,23 +421,37 @@ public class GamePanel extends JPanel implements Runnable{
 
             if(selectors.get(x).isClicked()){
                 g.setColor(new Color(3, 1, 1, 128));
-                g.fillRect( selectorPaddingLeft , initY + (x*gridHeight), gridWidth, gridHeight);
             } else {
                 g.setColor(new Color(0, 225, 255, 26));
-                g.fillRect(selectorPaddingLeft, initY + (x * gridHeight), gridWidth, gridHeight);
             }
+
+            g.fillRect(selectorPaddingLeft, initY + (x * gridHeight), gridWidth, gridHeight);
+            g.setColor(new Color(255, 0, 0, 255));
+            g.setFont(new Font("Tunga", Font.BOLD, 14));
+
             int Xcenter = selectorPaddingLeft + (gridWidth/2);
             int Ycenter = paddingTop + ((x * gridHeight) + (gridHeight/2));
 
 
             switch (x) {
-                case 0 -> tempImg = nurse;
-                case 1 -> tempImg = doctor;
-                case 2 -> tempImg = soldier;
-                case 3 -> tempImg = fire;
+                case 0 -> {
+                    g.drawImage(nurse, Xcenter - (nurse.getWidth()/2), Ycenter - (nurse.getHeight()/2), null);
+                    g.drawString("50", selectorPaddingLeft + (gridWidth - g.getFontMetrics().stringWidth("50")), initY + (x * gridHeight) + g.getFontMetrics().getHeight());
+                }
+                case 1 -> {
+                    tempImg = doctor;
+                    g.drawImage(doctor, Xcenter - (doctor.getWidth()/2), Ycenter - (doctor.getHeight()/2), null);
+                    g.drawString("100", selectorPaddingLeft + (gridWidth - g.getFontMetrics().stringWidth("100")), initY + (x * gridHeight) + g.getFontMetrics().getHeight());
+                }
+                case 2 -> {
+                    g.drawImage(soldier, Xcenter - (soldier.getWidth()/2), Ycenter - (soldier.getHeight()/2), null);
+                    g.drawString("75", selectorPaddingLeft + (gridWidth - g.getFontMetrics().stringWidth("75")), initY + (x * gridHeight) + g.getFontMetrics().getHeight());
+                }
+                case 3 -> {
+                    g.setFont(new Font("Tunga", Font.BOLD, 28));
+                    g.drawString("FIRE", Xcenter - g.getFontMetrics().stringWidth("FIRE")/2, Ycenter + g.getFontMetrics().getHeight()/2);
+                }
             }
-
-            g.drawImage(tempImg, Xcenter - (tempImg.getWidth()/2), Ycenter - (tempImg.getHeight()/2), null);
         }
     }
 

@@ -78,8 +78,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-        //new SplashScreen();
-        new MainGameFrame();
+        new SplashScreen();
+        //new MainGameFrame();
     }
     @Override
     public void actionPerformed(ActionEvent e) {
