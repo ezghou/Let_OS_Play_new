@@ -1,6 +1,7 @@
 package main.LockdownGameLogic;
 
 import main.Lockdown_MainFrame;
+import main.Lockdown_QuestionsHandler;
 import main.MainGameFrame;
 
 import javax.imageio.ImageIO;
@@ -20,7 +21,7 @@ public class Constants {
     //public static final int paddingTop = 100;
     public static final int paddingTop = 20;
     //public static final int paddingBottom = 30;
-    public static final int paddingBottom = 180;
+    public static final int paddingBottom = 140;
     public static final int estTitleHeight = 40;
     public static final int gridRowCount = 9;
     public static final int gridColumnCount = 5;
@@ -47,6 +48,13 @@ public class Constants {
     public static BufferedImage SickDude;
     public static BufferedImage testFieldMiddle;
     public static BufferedImage testFieldBottom;
+    public static BufferedImage testFieldLeft;
+    public static BufferedImage testFieldRight;
+    public static BufferedImage testFieldTopRight;
+    public static BufferedImage testFieldTopLeft;
+    public static BufferedImage testFieldBottomRight;
+    public static BufferedImage testFieldBottomLeft;
+    public static BufferedImage background;
     public static Lockdown_MainFrame mgf;
     public static int mouseX, mouseY;
     public static int globalCharaID = -1;
@@ -55,6 +63,8 @@ public class Constants {
             col4EnemCount = 0, col5EnemCount = 0;
 
     public static int Coins = 50;
+
+    public static Lockdown_QuestionsHandler questionsHandler;
 
     public static void setUp(Lockdown_MainFrame mgf){
         Constants.mgf = mgf;
@@ -80,6 +90,21 @@ public class Constants {
             testFieldBottom = ImageIO.read(is);
             is = mgf.getClass().getResourceAsStream("/Resources/Sickdude.png");
             SickDude = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/Background_Lockdown.png");
+            background = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldLeft.png");
+            testFieldLeft = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldRight.png");
+            testFieldRight = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldTopRight.png");
+            testFieldTopRight = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldTopLeft.png");
+            testFieldTopLeft = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldBottomRight.png");
+            testFieldBottomRight = ImageIO.read(is);
+            is = mgf.getClass().getResourceAsStream("/Resources/TestFieldBottomLeft.png");
+            testFieldBottomLeft = ImageIO.read(is);
+
 
             is.close();
         }catch (Exception e){

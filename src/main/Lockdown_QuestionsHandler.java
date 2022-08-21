@@ -36,7 +36,9 @@ public class Lockdown_QuestionsHandler implements Runnable {
     JTextArea timeAlive = new JTextArea();
 
     private final Thread questionThread;
+
     private final Debug questionTimerRefresh = new Debug();
+    private boolean changeQuestion = false;
 
     public Lockdown_QuestionsHandler(JPanel parent) throws FileNotFoundException, URISyntaxException {
 
@@ -209,7 +211,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
         });
     }
 
-    private boolean changeQuestion;
     /**
      * Added a semi game loop to have a
      * refresh timer for the questions
@@ -238,5 +239,12 @@ public class Lockdown_QuestionsHandler implements Runnable {
 
     public void start(){
         questionThread.start();
+    }
+
+    public void restart(){
+        questionTimerRefresh.resetTime();
+        changeQuestion = false;
+        Thread thread = new Thread(this);
+        thread.start();
     }
 }

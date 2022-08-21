@@ -122,7 +122,7 @@ import static main.LockdownGameLogic.Constants.*;
             exitButton.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
             secondPanel.add(exitButton, BorderLayout.WEST);
             this.add(secondPanel, BorderLayout.SOUTH);
-            Lockdown_QuestionsHandler questionsHandler = new Lockdown_QuestionsHandler(secondPanel);
+            questionsHandler = new Lockdown_QuestionsHandler(secondPanel);
 
             questionsHandler.start();
         }

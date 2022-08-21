@@ -62,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
             selectors.add(new SelectorHandler(x));
         }
 
-        enemySpawnerViaKey();
+        //enemySpawnerViaKey();
 
         addMouseListener(new MouseAdapter(){
             @Override
@@ -78,6 +78,7 @@ public class GamePanel extends JPanel implements Runnable{
                     repaint();
                     Thread newThread = new Thread(GamePanel.this);
                     newThread.start();
+                    questionsHandler.restart();
                 }
 
                 //SELECTOR
@@ -373,19 +374,41 @@ public class GamePanel extends JPanel implements Runnable{
 
 
         //DRAW THE GRID
-        g.setColor(Color.BLACK);
+        //g.setColor(Color.BLACK);
+        g.drawImage(background, 0 , 0, SCREEN_WIDTH, SCREEN_HEIGHT, null);
 
         for(int x = 0; x < gridRowCount; x++) {
             for (int y = 0; y < gridColumnCount; y++) {
                 //g.drawRect(initX + (x * gridWidth), initY + (y * gridHeight), gridWidth, gridHeight);
                 int Xcenter = initX + (x * gridWidth);
                 int Ycenter = initY + (y * gridHeight);
-                switch (y){
-                    case 0 -> g.drawImage(testField,  Xcenter, Ycenter, gridWidth,  gridHeight, null);
-                    case gridColumnCount - 1-> g.drawImage(testFieldBottom,  Xcenter, Ycenter, gridWidth, gridHeight, null);
-                    default -> g.drawImage(testFieldMiddle,  Xcenter, Ycenter, gridWidth, gridHeight, null);
+                if(x != gridRowCount - 1 && x != 0) {
+                    switch (y) {
+                        case 0 -> g.drawImage(testField, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                        case gridColumnCount - 1 -> g.drawImage(testFieldBottom, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                        default -> g.drawImage(testFieldMiddle, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                    }
                 }
 
+                if(y != 0 && y != gridColumnCount - 1) {
+                    switch (x) {
+                        case 0 -> g.drawImage(testFieldLeft, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                        case gridRowCount - 1 -> g.drawImage(testFieldRight, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                    }
+                }
+
+
+                switch (x){
+                    case 0 -> {
+                        if(y == 0) g.drawImage(testFieldTopLeft, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                        if(y == gridColumnCount - 1) g.drawImage(testFieldBottomLeft, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                    }
+                    case gridRowCount - 1 -> {
+                        if(y == 0) g.drawImage(testFieldTopRight, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                        if(y == gridColumnCount - 1) g.drawImage(testFieldBottomRight, Xcenter, Ycenter, gridWidth, gridHeight, null);
+                    }
+
+                }
             }
         }
 
@@ -397,10 +420,10 @@ public class GamePanel extends JPanel implements Runnable{
         for(int x = 0; x < 4; x++){
 
             if(selectors.get(x).isClicked()){
-                g.setColor(Color.red);
+                g.setColor(new Color(3, 1, 1, 128));
                 g.fillRect( selectorPaddingLeft , initY + (x*gridHeight), gridWidth, gridHeight);
             } else {
-                g.setColor(Color.gray);
+                g.setColor(new Color(0, 225, 255, 26));
                 g.fillRect(selectorPaddingLeft, initY + (x * gridHeight), gridWidth, gridHeight);
             }
             int Xcenter = selectorPaddingLeft + (gridWidth/2);
