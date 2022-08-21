@@ -40,6 +40,8 @@ public class Lockdown_QuestionsHandler implements Runnable {
     private final Debug questionTimerRefresh = new Debug();
     private boolean changeQuestion = false;
 
+    Sounds checkAnswer = new Sounds();
+
     public Lockdown_QuestionsHandler(JPanel parent) throws FileNotFoundException, URISyntaxException {
 
         /**
@@ -190,14 +192,17 @@ public class Lockdown_QuestionsHandler implements Runnable {
             @Override
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
+                checkAnswer.soundChoice(4);
                 jTextArea.setForeground(new Color(207, 54, 66));
                 if (changeQuestion)return;
                 if (jTextArea.getText().equals(correctAnswer)){
                     Coins += 100;
+                    checkAnswer.soundChoice(2);
                     questionText.setBackground(Color.green);
                     return;
                 }
 
+                checkAnswer.soundChoice(3);
                 questionText.setBackground(Color.RED);
             }
 

@@ -11,6 +11,7 @@ public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
 @SuppressWarnings("ALL")
     JLabel mainLogo;
     JButton backButton;
+    Sounds click = new Sounds();
 
     Lockdown_HowToPlayFrame() {
         int SCREEN_WIDTH = 1060;
@@ -53,13 +54,12 @@ public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        click.soundChoice(4);
         new Lockdown_MainFrame();
         this.dispose();
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        new Lockdown_MainFrame();
-        this.dispose();
     }
     @Override
     public void mouseReleased(MouseEvent e) {

@@ -21,7 +21,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
     JButton selectLockdown;
     JButton selectOSNAKES;
     Sounds click = new Sounds();
-    Sounds musicTheLadder = new Sounds();
+    Sounds bg = new Sounds();
 
     MainGameFrame() {
         int SCREEN_WIDTH = 1060;
@@ -60,6 +60,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
         selectOSNAKES.setBounds((int) Math.round(SCREEN_WIDTH * 0.3697916666666), (int) Math.round(SCREEN_HEIGHT * 0.5787037), 300, 200);
         selectOSNAKES.addActionListener(this);
 
+        music();
+
         this.setTitle("Let OS Play");
         this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,12 +83,24 @@ public class MainGameFrame extends JFrame implements ActionListener {
         new SplashScreen();
         //new MainGameFrame();
     }
+
+
+    public void music(){
+        try {
+            bg.soundChoice(5);
+        } catch (Exception e) {
+            Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        bg.playLoop();
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == selectLadder) {
             try {
                 click.soundChoice(4);
+                bg.stop();
                 new TheLadder_splashFrame();
                 theLadder_mainFrame = new TheLadder_MainFrame();
             } catch (InterruptedException ex) {
@@ -98,6 +112,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         if (e.getSource() == selectLockdown) {
             try {
                 click.soundChoice(4);
+                bg.stop();
                 new Lockdown_SplashScreen();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
@@ -107,6 +122,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
         if (e.getSource() == selectOSNAKES) {
             try {
+                click.soundChoice(4);
+                bg.stop();
                 new OSnakes_splashFrame();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();

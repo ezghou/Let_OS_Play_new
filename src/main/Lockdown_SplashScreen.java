@@ -9,6 +9,7 @@ import java.net.URL;
     public class Lockdown_SplashScreen extends JFrame implements MouseListener {
 
         JLabel OSnakes_bg;
+        Sounds click = new Sounds();
 
         Lockdown_SplashScreen() throws InterruptedException {
             int SCREEN_WIDTH = 1060;
@@ -36,6 +37,7 @@ import java.net.URL;
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            click.soundChoice(4);
             new Lockdown_MainFrame();
             this.dispose();
         }

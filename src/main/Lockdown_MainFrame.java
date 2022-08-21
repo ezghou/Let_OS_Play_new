@@ -26,6 +26,7 @@ import static main.LockdownGameLogic.Constants.*;
         private JButton exitButton;
 
         private GamePanel gamePanel;
+        Sounds click = new Sounds();
 
         Lockdown_MainFrame() {
             URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -127,12 +128,12 @@ import static main.LockdownGameLogic.Constants.*;
             questionsHandler.start();
         }
 
-
         @Override
         public void mouseClicked(MouseEvent e) {
 
             if(e.getSource()==Play){
                 try {
+                    click.soundChoice(4);
                     new Lockdown_MainFrame(1);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
@@ -142,15 +143,18 @@ import static main.LockdownGameLogic.Constants.*;
                 this.dispose();
             }
             if(e.getSource()==HowToPlayButton){
+                click.soundChoice(4);
                 new Lockdown_HowToPlayFrame();
                 this.dispose();
             }
             if(e.getSource()==Exit){
+                click.soundChoice(4);
                 new MainGameFrame();
                 this.dispose();
             }
 
             if(e.getSource()==exitButton){
+                click.soundChoice(4);
                 new Lockdown_MainFrame();
                 this.dispose();
             }

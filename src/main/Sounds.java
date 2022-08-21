@@ -23,6 +23,7 @@ public class Sounds {
     String mozart = "/sound/mozart-symphony41-3.wav";
     String wrong = "/sound/wrong.wav";
     String buttonClick = "/sound/buttonClick.wav";
+    String MainMusic = "/sound/Komiku_-_12_-_Bicycle.wav";
 
     /**
      * Play the required music or sfx.
@@ -42,6 +43,9 @@ public class Sounds {
                     break;
                 case 4:
                     musicURL = getClass().getResource(buttonClick);
+                    break;
+                case 5:
+                    musicURL = getClass().getResource(MainMusic);
                     break;
             }
 
