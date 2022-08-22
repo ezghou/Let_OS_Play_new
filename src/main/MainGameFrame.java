@@ -77,8 +77,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
-        //new SplashScreen();
-        new OSnakes_splashFrame();
+        new SplashScreen();
     }
 
 

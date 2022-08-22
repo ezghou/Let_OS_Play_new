@@ -98,6 +98,7 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
         }
         if(e.getSource()==homeButton){
             click.soundChoice(9);
+            bgMusic.stop();
             new MainGameFrame();
             this.dispose();
         }

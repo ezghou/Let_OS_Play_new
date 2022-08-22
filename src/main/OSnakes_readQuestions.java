@@ -70,7 +70,6 @@ public class OSnakes_readQuestions {
         } catch(IOException ex){
             JOptionPane.showMessageDialog(null, "File Not Found. Re-check the questionsFile.xlsx file");
         }
-        System.out.println("size: "+questions.size());
     }
 
     /**

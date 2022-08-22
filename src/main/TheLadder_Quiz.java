@@ -325,11 +325,9 @@ import java.util.logging.Logger;
 
     public final void setQuestion(){
         countQs++;
-        System.out.println("countQs: " + countQs);
         question = question.replace("\n", " ").replace("\r", " ");
         questionText.setText(question + "\n \n");
         correctAnswer = editQuestions.CorrectAnswer;
-        System.out.println(question);
         System.out.println(correctAnswer);
     }
 
@@ -440,38 +438,30 @@ import java.util.logging.Logger;
         else{
             if (answer_A.getText().equals(correctAnswer)){
                 checkChoiceA = 1;
-                System.out.println("checkChoiceA: " + checkChoiceA);
             }
             else{
                 checkChoiceA = 0;
-                System.out.println("checkChoiceA: " + checkChoiceA);
             }
 
             if (answer_B.getText().equals(correctAnswer)){
                 checkChoiceB = 1;
-                System.out.println("checkChoiceB: " + checkChoiceB);
             }
             else{
                 checkChoiceB = 0;
-                System.out.println("checkChoiceB: " + checkChoiceB);
             }
 
             if (answer_C.getText().equals(correctAnswer)){
                 checkChoiceC = 1;
-                System.out.println("checkChoiceC: " + checkChoiceC);
             }
             else{
                 checkChoiceC = 0;
-                System.out.println("checkChoiceC: " + checkChoiceC);
             }
 
             if (answer_D.getText().equals(correctAnswer)){
                 checkChoiceD = 1;
-                System.out.println("checkChoiceD: " + checkChoiceD);
             }
             else{
                 checkChoiceD = 0;
-                System.out.println("checkChoiceD: " + checkChoiceD);
             }
 
             displayAnswer();
@@ -614,7 +604,6 @@ import java.util.logging.Logger;
     }
     public void skip() throws FileNotFoundException, URISyntaxException {
         if(coins < 60){
-            System.out.println(coins);
             JOptionPane.showMessageDialog(null, "You don'to have sufficient coins");
         }
         else{
@@ -704,7 +693,6 @@ import java.util.logging.Logger;
 
                 }
                 guess = answer_A.getText();
-                System.out.println("Guess: " + guess);
             }
 
             //Button Click variable is created to avoid multiple clicking of the
@@ -723,7 +711,6 @@ import java.util.logging.Logger;
 
                 }
                 guess = answer_B.getText();
-                System.out.println("Guess: " + guess);
             }
             buttonClicksA = 0;
             buttonClicksC = 0;
@@ -739,7 +726,6 @@ import java.util.logging.Logger;
 
                 }
                 guess = answer_C.getText();
-                System.out.println("Guess: " + guess);
             }
             buttonClicksB = 0;
             buttonClicksA = 0;
@@ -755,7 +741,6 @@ import java.util.logging.Logger;
 
                 }
                 guess = answer_D.getText();
-                System.out.println("Guess: " + guess);
             }
             buttonClicksB = 0;
             buttonClicksC = 0;
