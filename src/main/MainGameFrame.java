@@ -1,8 +1,5 @@
 package main;
 
-import main.LockdownGameLogic.Constants;
-import main.LockdownGameLogic.GamePanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,6 +13,7 @@ import java.util.logging.Logger;
 @SuppressWarnings("ALL")
 public class MainGameFrame extends JFrame implements ActionListener {
     public static  TheLadder_MainFrame theLadder_mainFrame;
+    public static Lockdown_MainFrame theLockdown_mainFrame;
     JLabel logo;
     JButton selectLadder;
     JButton selectLockdown;
@@ -30,7 +28,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
-        //Constants.setUp(this);
 
         logo = new JLabel(new ImageIcon(getClass().getResource("/Resources/LogoSmall.png")));
         logo.setVerticalAlignment(JLabel.CENTER);
@@ -81,7 +78,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
 
     public static void main(String[] args) throws InterruptedException, IOException, URISyntaxException {
         new SplashScreen();
-        //new MainGameFrame();
     }
 
 
@@ -91,7 +87,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         } catch (Exception e) {
             Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, e);
         }
-
         bg.playLoop();
     }
     @Override
@@ -114,6 +109,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
                 click.soundChoice(4);
                 bg.stop();
                 new Lockdown_SplashScreen();
+                theLockdown_mainFrame = new Lockdown_MainFrame();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

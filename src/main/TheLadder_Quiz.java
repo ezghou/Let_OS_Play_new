@@ -613,8 +613,8 @@ import java.util.logging.Logger;
         }
     }
     public void skip() throws FileNotFoundException, URISyntaxException {
-        getQuestions();
         if(coins < 60){
+            System.out.println(coins);
             JOptionPane.showMessageDialog(null, "You don'to have sufficient coins");
         }
         else{
@@ -625,7 +625,7 @@ import java.util.logging.Logger;
     }
     public void reveal(){
         if(coins < 80){
-            JOptionPane.showMessageDialog(null, "You don'to have sufficient coins");
+            JOptionPane.showMessageDialog(null, "You don't have sufficient coins");
         }
         else{
             JOptionPane.showMessageDialog(null, "The answer for this question is " +correctAnswer);
@@ -762,60 +762,4 @@ import java.util.logging.Logger;
             buttonClicksA = 0;
         }
     }
-
-        /*
-        @Override
-        public void mouseReleased(MouseEvent e) {}
-        @Override
-        public void mouseEntered(MouseEvent e) {
-            if(e.getSource()==Peek){
-                Peek.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-                Peek.setFont(new Font("Cambria", Font.BOLD, 18));
-            }
-
-            if(e.getSource()==Skip){
-                Skip.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-                Skip.setFont(new Font("Cambria", Font.BOLD, 18));
-            }
-            if(e.getSource()==Reveal){
-                Reveal.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-                Reveal.setFont(new Font("Cambria", Font.BOLD, 18));
-            }
-            if(e.getSource()==Next){
-                Next.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-                Next.setFont(new Font("Cambria", Font.BOLD, 18));
-            }
-            if(e.getSource()== Submit){
-                Submit.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-                Submit.setFont(new Font("Cambria", Font.BOLD, 18));
-            }
-        }
-        @Override
-        public void mouseExited(MouseEvent e) {
-            if(e.getSource()==Peek){
-                Peek.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),3));
-                Peek.setFont(new Font("Cambria", Font.BOLD, 15));
-            }
-
-            if(e.getSource()==Skip){
-                Skip.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),3));
-                Skip.setFont(new Font("Cambria", Font.BOLD, 15));
-            }
-
-            if(e.getSource()==Reveal){
-                Reveal.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),3));
-                Reveal.setFont(new Font("Cambria", Font.BOLD, 15));
-            }
-
-            if(e.getSource()==Next){
-                Next.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),3));
-                Next.setFont(new Font("Cambria", Font.BOLD, 15));
-            }
-            if(e.getSource()==Submit){
-                Submit.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),3));
-                Submit.setFont(new Font("Cambria", Font.BOLD, 15));
-            }
-        }
-
-         */
-    }
+}

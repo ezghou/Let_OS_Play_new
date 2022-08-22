@@ -12,21 +12,21 @@ import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static main.LockdownGameLogic.Constants.*;
 
 @SuppressWarnings("ALL")
     public class Lockdown_MainFrame extends JFrame implements MouseListener {
-
         private JButton Play;
         private JButton HowToPlayButton;
         private JButton Exit;
         private JLabel mainLogo;
-
         private JButton exitButton;
-
         private GamePanel gamePanel;
         Sounds click = new Sounds();
+        Sounds bg = new Sounds();
 
         Lockdown_MainFrame() {
             URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -84,7 +84,9 @@ import static main.LockdownGameLogic.Constants.*;
             this.setIconImage(titleIcon.getImage());
             this.getContentPane().setBackground(new Color(3,10,33));
             this.setLocationRelativeTo(null);
-            this.setVisible(true);
+            this.setVisible(false);
+
+            music();
 
             this.getContentPane().add(Play);
             this.getContentPane().add(HowToPlayButton);
@@ -92,13 +94,19 @@ import static main.LockdownGameLogic.Constants.*;
             this.getContentPane().add(mainLogo);
         }
 
-
         public Lockdown_MainFrame(int i) throws FileNotFoundException, URISyntaxException {
             this.setTitle("Let OS Play");
+
+
+            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
+            assert iconURL != null;
+            ImageIcon titleIcon = new ImageIcon(iconURL);
+
             Constants.setUp(this);
             this.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setResizable(false);
+            this.setIconImage(titleIcon.getImage());
             this.setLocationRelativeTo(null); //Center frame in screen
             gamePanel = new GamePanel();
             this.add(gamePanel);
@@ -106,6 +114,15 @@ import static main.LockdownGameLogic.Constants.*;
             addQuestionsPanel();
 
             this.setVisible(true);
+        }
+
+        public void music(){
+            try {
+                bg.soundChoice(6);
+            } catch (Exception e) {
+                Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, e);
+            }
+            bg.playLoop();
         }
 
         public void addQuestionsPanel() throws FileNotFoundException, URISyntaxException {
@@ -134,6 +151,7 @@ import static main.LockdownGameLogic.Constants.*;
             if(e.getSource()==Play){
                 try {
                     click.soundChoice(4);
+                    this.setVisible(false);
                     new Lockdown_MainFrame(1);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
@@ -149,17 +167,16 @@ import static main.LockdownGameLogic.Constants.*;
             }
             if(e.getSource()==Exit){
                 click.soundChoice(4);
+                bg.stop();
                 new MainGameFrame();
                 this.dispose();
             }
 
             if(e.getSource()==exitButton){
                 click.soundChoice(4);
-                new Lockdown_MainFrame();
+                MainGameFrame.theLockdown_mainFrame.setVisible(true);
                 this.dispose();
             }
-
-
         }
         @Override
         public void mousePressed(MouseEvent e) {}
@@ -180,8 +197,6 @@ import static main.LockdownGameLogic.Constants.*;
                 Exit.setFont(new Font("Cambria", Font.BOLD, 30));
                 Exit.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),5));
             }
-
-
         }
         @Override
         public void mouseExited(MouseEvent e) {
@@ -199,9 +214,6 @@ import static main.LockdownGameLogic.Constants.*;
                 Exit.setFont(new Font("Cambria", Font.BOLD, 25));
                 Exit.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
             }
-
-
-
         }
 
     @Override

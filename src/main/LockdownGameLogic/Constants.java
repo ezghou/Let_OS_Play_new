@@ -14,13 +14,10 @@ import java.io.InputStream;
 public class Constants {
     public static final int SCREEN_WIDTH = 1060;
     public static final int SCREEN_HEIGHT = 660;
-    //public static final int paddingLeft = 140;
     public static final int paddingLeft = 180;
     public static final int paddingRight = 45;
     public static final int paddingSide= 40;
-    //public static final int paddingTop = 100;
     public static final int paddingTop = 20;
-    //public static final int paddingBottom = 30;
     public static final int paddingBottom = 140;
     public static final int estTitleHeight = 40;
     public static final int gridRowCount = 9;
@@ -105,7 +102,6 @@ public class Constants {
             is = mgf.getClass().getResourceAsStream("/Resources/TestFieldBottomLeft.png");
             testFieldBottomLeft = ImageIO.read(is);
 
-
             is.close();
         }catch (Exception e){
             e.printStackTrace();
@@ -114,7 +110,6 @@ public class Constants {
 
 
     public static BufferedImage colorImage(BufferedImage loadImg, Color color) {
-
         //CLONE
         ColorModel cm = loadImg.getColorModel();
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
@@ -133,7 +128,6 @@ public class Constants {
                 image.setRGB(x, y, rgba);
             }
         }
-
         return image;
     }
 }

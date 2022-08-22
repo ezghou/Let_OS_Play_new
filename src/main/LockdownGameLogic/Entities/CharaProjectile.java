@@ -4,7 +4,6 @@ import java.awt.*;
 
 import static main.LockdownGameLogic.Constants.gridHeight;
 import static main.LockdownGameLogic.Constants.gridWidth;
-
 public class CharaProjectile{
     Chara parentChara;
     public int projectilePositionX, projectilePositionY;

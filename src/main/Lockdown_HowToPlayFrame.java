@@ -79,6 +79,4 @@ public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
             backButton.setBorder(BorderFactory.createLineBorder(new Color(34, 42, 53),4));
         }
     }
-
-
 }

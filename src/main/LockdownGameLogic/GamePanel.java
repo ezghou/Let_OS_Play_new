@@ -31,14 +31,11 @@ public class GamePanel extends JPanel implements Runnable{
     private ArrayList<SelectorHandler> selectors = new ArrayList<>();
 
     //Var for displaying question
-
-
     private Thread gameThread;
     private Debug debug;
     private Debug spawnerDebug, spawnerDebug2, waveDebug;
     private float timeSpawn = 10;
     private float waveTime = 60;
-
 
     private BufferedImage tempImg;
     public GamePanel(){

@@ -54,7 +54,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
         thirdPanel.setBackground(Color.BLACK);
         questionThread = new Thread(this);
 
-
         questionText.setBounds(0,0,SCREEN_WIDTH/2,170);
         questionText.setForeground(new Color(230, 244, 251));
         questionText.setFont(new java.awt.Font("Tunga", 0, 15));
@@ -65,11 +64,9 @@ public class Lockdown_QuestionsHandler implements Runnable {
         questionText.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),2));
         questionText.setLayout(new FlowLayout());
 
-
         JPanel fourthPanel = new JPanel();
         fourthPanel.setLayout(new GridLayout(2, 2 , 10, 5));
         fourthPanel.setBackground(Color.BLACK);
-
 
         JPanel fifthPanel = new JPanel();
         fifthPanel.setLayout(new GridLayout(2, 1 , 10, 5));
@@ -111,8 +108,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
         fifthPanel.add(coinsText);
         fifthPanel.add(timeAlive);
 
-
-
         editQuestions = new Lockdown_editQuestions();
         getQuestions(); //setInitial question
 
@@ -138,8 +133,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
         question = question.replace("\n", " ").replace("\r", " ");
         questionText.setText(question + "\n \n"); //Set question in textarea
         correctAnswer = editQuestions.CorrectAnswer;
-        //System.out.println(question);
-        //System.out.println(correctAnswer);
     }
     public final void setChoices(){
         choice1 = editQuestions.firstChoice;
@@ -152,14 +145,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
         choiceList.add(choice4);
         int size;
         int index;
-
-        /*
-        System.out.println(choice1);
-        System.out.println(choice2);
-        System.out.println(choice3);
-        System.out.println(choice4);
-
-         */
 
         for(size = choiceList.size(); size > 0; size--){
             index = random.nextInt(size);

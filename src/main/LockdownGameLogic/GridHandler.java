@@ -19,8 +19,6 @@ public class GridHandler {
         setCenter();
     }
 
-
-    //NOT YET TESTED
     private void setCenter(){
         Xcenter = paddingLeft + ((rowCount * gridWidth) - (gridWidth/2));
         Ycenter = paddingTop + ((columnCount * gridHeight) - (gridHeight/2));
@@ -66,6 +64,4 @@ public class GridHandler {
     public boolean isOccupied() {
         return isOccupied;
     }
-
-
 }

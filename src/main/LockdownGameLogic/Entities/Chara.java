@@ -14,7 +14,6 @@ import static main.LockdownGameLogic.Constants.*;
  * only purpose atm, is for debug rendering
  */
 public class Chara {
-
     //This position is relative off of its center
     private int positionX;
     private int positionY;
@@ -30,17 +29,9 @@ public class Chara {
 
     private int cost;
 
-
-
     public Chara(int x, int y, int id){
         this.id = id;
         switch (id) {
-            /*
-            case 0 -> {
-                img = taxPayer;
-                health = 8;
-            }
-            */
             case 0 -> {
                 img = nurse;
                 damage = 1;
@@ -76,7 +67,6 @@ public class Chara {
         this.column = column;
     }
 
-
     public int getRow(){
         return row;
     }
@@ -86,7 +76,6 @@ public class Chara {
     }
 
     public void render(Graphics g){
-
         if(collidedWithInfected){
             g.drawImage(damagedImage, positionX, positionY, null);
             debug2.countSeconds();
@@ -125,7 +114,6 @@ public class Chara {
                         charaProjectiles.add(new CharaProjectile(this, 35, 10, 8));
                     }
                 }
-
                 case 1 -> {
                     if (debug1.elapsedTimeInSecond >= 2.5 && targets != 0) {
                         debug1.resetTime();

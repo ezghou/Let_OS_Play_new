@@ -24,6 +24,7 @@ public class Sounds {
     String wrong = "/sound/wrong.wav";
     String buttonClick = "/sound/buttonClick.wav";
     String MainMusic = "/sound/Komiku_-_12_-_Bicycle.wav";
+    String lockdownBG = "/sound/Sneaky-Snitch.wav";
 
     /**
      * Play the required music or sfx.
@@ -46,6 +47,9 @@ public class Sounds {
                     break;
                 case 5:
                     musicURL = getClass().getResource(MainMusic);
+                    break;
+                case 6:
+                    musicURL = getClass().getResource(lockdownBG);
                     break;
             }
 

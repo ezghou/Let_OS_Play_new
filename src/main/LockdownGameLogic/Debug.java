@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Debug {
-
     Random random;
     long start = System.nanoTime();
     long convert;
@@ -15,18 +14,15 @@ public class Debug {
     public void countSeconds(){
         long end = System.nanoTime();
         long elapsedTime = end - start;
-        //System.out.println(elapsedTime);
         // 1 second = 1_000_000_000 nano seconds
         elapsedTimeInSecond += (double) elapsedTime / 1_000_000_000;
         long s = (long) elapsedTimeInSecond;
-        //System.out.println(s + " seconds");
         start = end;
     }
 
     public long returnSeconds(){
         long end = System.nanoTime();
         long elapsedTime = end - start;
-        //System.out.println(elapsedTime);
         // 1 second = 1_000_000_000 nano seconds
         elapsedTimeInSecond += (double) elapsedTime / 1_000_000_000;
         long s = (long) elapsedTimeInSecond;
