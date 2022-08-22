@@ -1,17 +1,24 @@
 package main;
 
+/*
+  Responsible for fetching and reading the questions
+  from the questionsFile.xlsx based on the category id.
+
+  @author  Erica Talahiban
+ * @version 1.0
+ */
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import javax.swing.*;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-
+@SuppressWarnings("ALL")
 public class OSnakes_readQuestions {
     ArrayList<String> header = new ArrayList<>();
     ArrayList<Integer> id = new ArrayList<>();
@@ -22,20 +29,22 @@ public class OSnakes_readQuestions {
     ArrayList<String> choice3 = new ArrayList<>();
     ArrayList<String> choice4 = new ArrayList<>();
     ArrayList<String> correctAnswer = new ArrayList<>();
-
+    File questionsFile = new File("questionsFile.xlsx");
+    String path = questionsFile.getAbsoluteFile().getParent() + "/questionsFile.xlsx";
     DataFormatter formatter;
     String cellContent;
-
-    OSnakes_readQuestions() {
-        String excelFilePath = "questions.xlsx";
+    /**
+     *  Access the questions file from inside the jar/exe.
+     */
+    public OSnakes_readQuestions(){
         formatter = new DataFormatter();
-        try( FileInputStream inputStream = new FileInputStream(excelFilePath)){
+        try( InputStream inputStream = this.getClass().getResourceAsStream("/questions.xlsx")){
             XSSFWorkbook importedFile = new XSSFWorkbook(inputStream);
             XSSFSheet theoretical = importedFile.getSheetAt(0);
             for (Row row : theoretical) {
-                Iterator<Cell> cellIterator = row.cellIterator();
-                while (cellIterator.hasNext()) {
-                    Cell cell = cellIterator.next();
+                Iterator<Cell> TcellIterator = row.cellIterator();
+                while (TcellIterator.hasNext()) {
+                    Cell cell = TcellIterator.next();
                     if (row.getRowNum() == 0) {
                         header.add(cell.getStringCellValue());
                     } else {
@@ -44,13 +53,13 @@ public class OSnakes_readQuestions {
                             case 1 -> topic.add(cell.getStringCellValue());
                             case 2 -> questions.add(cell.getStringCellValue());
                             case 3 -> {
-                                        cellContent = formatter.formatCellValue(cell);
-                                        choice1.add(cellContent);
-                                        }
+                                cellContent = formatter.formatCellValue(cell);
+                                choice1.add(cellContent);
+                            }
                             case 4 -> {
-                                        cellContent = formatter.formatCellValue(cell);
-                                        choice2.add(cellContent);
-                                        }
+                                cellContent = formatter.formatCellValue(cell);
+                                choice2.add(cellContent);
+                            }
                             case 5 -> {
                                 cellContent = formatter.formatCellValue(cell);
                                 choice3.add(cellContent);
@@ -71,7 +80,6 @@ public class OSnakes_readQuestions {
             JOptionPane.showMessageDialog(null, "File Not Found. Re-check the questionsFile.xlsx file");
         }
     }
-
     /**
      * Store question data in arraylists
      */
