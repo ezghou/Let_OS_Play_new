@@ -13,6 +13,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  * @author  EzGhou
  * @author  Therese Nuelle Roca
+ * @author  Erica Talahiban
  */
 public class Sounds {
 
@@ -32,35 +33,22 @@ public class Sounds {
      */
     public void soundChoice(int num){
         try{
-            switch(num){
-                case 1:
-                    musicURL = getClass().getResource(mozart);
-                    break;
-                case 2:
-                    musicURL = getClass().getResource(correct);
-                    break;
-                case 3:
-                    musicURL = getClass().getResource(wrong);
-                    break;
-                case 4:
-                    musicURL = getClass().getResource(buttonClick);
-                    break;
-                case 5:
-                    musicURL = getClass().getResource(MainMusic);
-                    break;
-                case 6:
-                    musicURL = getClass().getResource(lockdownBG);
-                    break;
+            switch (num) {
+                case 1 -> musicURL = getClass().getResource(mozart);
+                case 2 -> musicURL = getClass().getResource(correct);
+                case 3 -> musicURL = getClass().getResource(wrong);
+                case 4 -> musicURL = getClass().getResource(buttonClick);
+                case 5 -> musicURL = getClass().getResource(MainMusic);
+                case 6 -> musicURL = getClass().getResource(lockdownBG);
             }
 
+            assert musicURL != null;
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicURL);
             clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
         }
-        catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-
-        }
+        catch (UnsupportedAudioFileException | IOException | LineUnavailableException ignored) { }
     }
 
     /**

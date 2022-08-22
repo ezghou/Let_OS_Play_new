@@ -7,7 +7,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.swing.*;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,16 +23,12 @@ public class OSnakes_readQuestions {
     ArrayList<String> choice4 = new ArrayList<>();
     ArrayList<String> correctAnswer = new ArrayList<>();
 
-    File questionsFile = new File("questionsFile.xlsx");
-    String path = questionsFile.getAbsoluteFile().getParent() + "/questionsFile.xlsx";
     DataFormatter formatter;
     String cellContent;
 
     OSnakes_readQuestions() {
-        String excelFilePath = "questionsFile.xlsx";
-
+        String excelFilePath = "questions.xlsx";
         formatter = new DataFormatter();
-
         try( FileInputStream inputStream = new FileInputStream(excelFilePath)){
             XSSFWorkbook importedFile = new XSSFWorkbook(inputStream);
             XSSFSheet theoretical = importedFile.getSheetAt(0);
@@ -75,6 +70,7 @@ public class OSnakes_readQuestions {
         } catch(IOException ex){
             JOptionPane.showMessageDialog(null, "File Not Found. Re-check the questionsFile.xlsx file");
         }
+        System.out.println("size: "+questions.size());
     }
 
     public ArrayList<String> questions(){

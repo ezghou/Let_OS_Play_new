@@ -77,6 +77,8 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         qsTextArea.setBackground(new Color(245, 243, 245));
         qsTextArea.setFont(new Font("Verdana", Font.PLAIN, 14));
         qsTextArea.setMargin(new Insets(20,20,20,20));
+        qsTextArea.setLineWrap(true);
+        qsTextArea.setWrapStyleWord(true);
         qsTextArea.setEditable(false);
         qsTextArea.setFocusable(false);
 
