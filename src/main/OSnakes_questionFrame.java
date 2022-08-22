@@ -182,57 +182,23 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         this.getContentPane().add(backButton);
         //this.getContentPane().add(answer1);
 
-        editQuestions = new OSnakes_editQuestions(this, bgMusic);
-        getQuestions();
+        editQuestions = new OSnakes_editQuestions();
+        displayMCQ();
     }
 
-    public final void getQuestions() throws URISyntaxException, FileNotFoundException {
-        editQuestions.getQuestion();
-        question = editQuestions.question;
-        id = editQuestions.question_id;
-        setQuestion();
-        setChoices();
+    public void displayMCQ(){
+        editQuestions.setRandomID();
+        qsTextArea.setText(editQuestions.getQuestion());
+        String[] choices = editQuestions.getChoices();
+        choiceA.setText(choices[0]);
+        choiceB.setText(choices[1]);
+        choiceC.setText(choices[2]);
+        choiceD.setText(choices[3]);
+        gamePanel.setChoices(choices[0], choices[1], choices[2], choices[3], editQuestions.getCorrectAnswer());
+        System.out.println("answer: "+editQuestions.getCorrectAnswer());
     }
 
-    public final void setQuestion(){
-        countQs++;
-        qsTextArea.setText(question + "\n \n");
-        correctAnswer = editQuestions.CorrectAnswer;
-        answer1.setText(correctAnswer);
-        System.out.println(correctAnswer);
-    }
-
-    public final void setChoices(){
-        choice1 = editQuestions.firstChoice;
-        choice2 = editQuestions.secondChoice;
-        choice3 = editQuestions.thirdChoice;
-        choice4 = editQuestions.fourthChoice;
-        choiceList.add(choice1);
-        choiceList.add(choice2);
-        choiceList.add(choice3);
-        choiceList.add(choice4);
-        int size;
-        int index;
-
-        for(size = choiceList.size(); size > 0; size--){
-            index = random.nextInt(size);
-            switch (size) {
-                case 4 -> choice1 = choiceList.get(index);
-                case 3 -> choice2 = choiceList.get(index);
-                case 2 -> choice3 = choiceList.get(index);
-                case 1 -> choice4 = choiceList.get(index);
-                default -> { }
-            }
-            choiceList.remove(index);
-        }
-        choiceA.setText(choice1);
-        choiceB.setText(choice2);
-        choiceC.setText(choice3);
-        choiceD.setText(choice4);
-        gamePanel.setChoices(choice1, choice2, choice3, choice4, correctAnswer);
-    }
-
-    public void setPoints(int points){
+    public void editPoints(int points){
         pointsLabel.setText("Points: " + points);
     }
 

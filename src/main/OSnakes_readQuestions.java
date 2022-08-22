@@ -73,22 +73,28 @@ public class OSnakes_readQuestions {
         System.out.println("size: "+questions.size());
     }
 
-    public ArrayList<String> questions(){
+    /**
+     * Store question data in arraylists
+     */
+    public ArrayList<String> getQuestions(){
         return questions;
     }
-    public ArrayList<String> choice1(){
+    public ArrayList<String> getChoice1(){
         return choice1;
     }
-    public ArrayList<String> choice2(){
+    public ArrayList<String> getChoice2(){
         return choice2;
     }
-    public ArrayList<String> choice3(){
+    public ArrayList<String> getChoice3(){
         return choice3;
     }
-    public ArrayList<String> choice4(){
+    public ArrayList<String> getChoice4(){
         return choice4;
     }
-    public ArrayList<String> correctAnswer(){
+    public ArrayList<String> getCorrectAnswer(){
         return correctAnswer;
+    }
+    public ArrayList<Integer> getID(){
+        return id;
     }
 }

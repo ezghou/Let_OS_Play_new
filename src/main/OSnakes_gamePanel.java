@@ -95,7 +95,7 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                     g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
                 }
             }
-            questionFrame.setPoints(points);
+            questionFrame.editPoints(points);
         }
         else {
             gameOver(g);
@@ -133,8 +133,6 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 }
             }
             else{
-                bgMusic.stop();
-                bgMusic.soundChoice(12);
                 gameOver = true; }
         }
         if((x[0] == windowsX) && (y[0] == windowsY)) {
@@ -146,8 +144,6 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 }
             }
             else{
-                bgMusic.stop();
-                bgMusic.soundChoice(12);
                 gameOver = true;
             }
         }
@@ -160,8 +156,6 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 }
             }
             else{
-                bgMusic.stop();
-                bgMusic.soundChoice(12);
                 gameOver = true; }
         }
         if((x[0] == linuxX) && (y[0] == linuxY)) {
@@ -173,8 +167,6 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 }
             }
             else{
-                bgMusic.stop();
-                bgMusic.soundChoice(12);
                 gameOver = true; }
         }
     }
@@ -183,7 +175,7 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
         bodyParts++;
         points += 10;
         newOS();
-        questionFrame.getQuestions();
+        questionFrame.displayMCQ();
     }
     public void checkCollisions() {
         for(int i = bodyParts;i>0;i--) {
@@ -205,8 +197,6 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
             running = false;
         }
         if(!running) {
-            bgMusic.stop();
-            bgMusic.soundChoice(12);
             timer.stop();
         }
     }

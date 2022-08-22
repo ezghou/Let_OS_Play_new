@@ -10,12 +10,12 @@ import java.util.Random;
         TheLadder_Quiz questionFrame;
         OSnakes_readQuestions readQuestions = new OSnakes_readQuestions();
 
-        ArrayList<String> questions = readQuestions.questions();
-        ArrayList<String> choice1 = readQuestions.choice1();
-        ArrayList<String> choice2 = readQuestions.choice2();
-        ArrayList<String> choice3 = readQuestions.choice3();
-        ArrayList<String> choice4 = readQuestions.choice4();
-        ArrayList<String> correctAnswer = readQuestions.correctAnswer();
+        ArrayList<String> questions = readQuestions.getQuestions();
+        ArrayList<String> choice1 = readQuestions.getChoice1();
+        ArrayList<String> choice2 = readQuestions.getChoice2();
+        ArrayList<String> choice3 = readQuestions.getChoice3();
+        ArrayList<String> choice4 = readQuestions.getChoice4();
+        ArrayList<String> correctAnswer = readQuestions.getCorrectAnswer();
         ArrayList<String> askedQuestions = new ArrayList<>();
         public static ArrayList<String> DoneQuestions = new ArrayList<>();
 
