@@ -62,7 +62,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         pointsLabel.setFocusable(false);
 
         JLabel iosLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_iosLogo.png")), JLabel.CENTER);
-        iosLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125), 300,50,30);
+        iosLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125), 250,50,30);
         iosLogo.setFocusable(false);
 
         JLabel windowsLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_windowsLogo.png")), JLabel.CENTER);
@@ -78,7 +78,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         linuxLogo.setFocusable(false);
 
         qsTextArea = new JTextArea();
-        qsTextArea.setBounds((int)Math.round(SCREEN_WIDTH*0.022786458333),130,450,150);
+        qsTextArea.setBounds((int)Math.round(SCREEN_WIDTH*0.022786458333),130,450,100);
         qsTextArea.setBackground(new Color(245, 243, 245));
         qsTextArea.setFont(new Font("Verdana", Font.PLAIN, 14));
         qsTextArea.setMargin(new Insets(20,20,20,20));
@@ -88,34 +88,42 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         qsTextArea.setFocusable(false);
 
         choiceA = new JTextArea();
-        choiceA.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),300,370,30);
+        choiceA.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),250,370,50);
         choiceA.setBackground(new Color(252, 100, 103));
-        choiceA.setFont(new Font("Verdana", Font.PLAIN, 14));
+        choiceA.setFont(new Font("Verdana", Font.PLAIN, 12));
         choiceA.setMargin(new Insets(5,10,5,5));
+        choiceA.setLineWrap(true);
+        choiceA.setWrapStyleWord(true);
         choiceA.setEditable(false);
         choiceA.setFocusable(false);
 
         choiceB = new JTextArea();
-        choiceB.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),350,370,30);
+        choiceB.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),310,370,50);
         choiceB.setBackground(new Color(129, 195, 201));
-        choiceB.setFont(new Font("Verdana", Font.PLAIN, 14));
+        choiceB.setFont(new Font("Verdana", Font.PLAIN, 12));
         choiceB.setMargin(new Insets(5,10,5,5));
+        choiceB.setLineWrap(true);
+        choiceB.setWrapStyleWord(true);
         choiceB.setEditable(false);
         choiceB.setFocusable(false);
 
         choiceC = new JTextArea();
-        choiceC.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),400,370,30);
+        choiceC.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),370,370,50);
         choiceC.setBackground(new Color(244, 166, 78));
-        choiceC.setFont(new Font("Verdana", Font.PLAIN, 14));
+        choiceC.setFont(new Font("Verdana", Font.PLAIN, 12));
         choiceC.setMargin(new Insets(5,10,5,5));
+        choiceC.setLineWrap(true);
+        choiceC.setWrapStyleWord(true);
         choiceC.setEditable(false);
         choiceC.setFocusable(false);
 
         choiceD = new JTextArea();
-        choiceD.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),450,370,30);
+        choiceD.setBounds((int)Math.round(SCREEN_WIDTH*0.09765625),430,370,50);
         choiceD.setBackground(new Color(255, 235, 91));
-        choiceD.setFont(new Font("Verdana", Font.PLAIN, 14));
+        choiceD.setFont(new Font("Verdana", Font.PLAIN, 12));
         choiceD.setMargin(new Insets(5,10,5,5));
+        choiceD.setLineWrap(true);
+        choiceD.setWrapStyleWord(true);
         choiceD.setEditable(false);
         choiceD.setFocusable(false);
 
@@ -171,7 +179,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         this.getContentPane().add(choiceD);
         this.getContentPane().add(restartButton);
         this.getContentPane().add(backButton);
-        this.getContentPane().add(answer1);
+        //this.getContentPane().add(answer1);
 
         editQuestions = new OSnakes_editQuestions(this, bgMusic);
         getQuestions();
