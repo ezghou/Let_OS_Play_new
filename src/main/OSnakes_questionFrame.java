@@ -34,6 +34,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     public static int countQs;
     private final OSnakes_gamePanel gamePanel;
     Sounds bgMusic;
+    Sounds click  = new Sounds();
 
     OSnakes_questionFrame (Sounds bgm) throws URISyntaxException, FileNotFoundException {
         bgMusic = bgm;
@@ -45,7 +46,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
         assert iconURL != null;
         ImageIcon titleIcon = new ImageIcon(iconURL);
-        gamePanel = new OSnakes_gamePanel(this, SCREEN_WIDTH, SCREEN_HEIGHT);
+        gamePanel = new OSnakes_gamePanel(this, SCREEN_WIDTH, SCREEN_HEIGHT, bgMusic);
 
         JLabel qsLabel = new JLabel();
         qsLabel.setText("Question");
@@ -62,19 +63,19 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         pointsLabel.setFocusable(false);
 
         JLabel iosLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_iosLogo.png")), JLabel.CENTER);
-        iosLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125), 250,50,30);
+        iosLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125), 260,50,30);
         iosLogo.setFocusable(false);
 
         JLabel windowsLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_windowsLogo.png")), JLabel.CENTER);
-        windowsLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),350,50,30);
+        windowsLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),320,50,30);
         windowsLogo.setFocusable(false);
 
         JLabel ubuntuLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_ubuntuLogo.png")), JLabel.CENTER);
-        ubuntuLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),400,50,30);
+        ubuntuLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),380,50,30);
         ubuntuLogo.setFocusable(false);
 
         JLabel linuxLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/OSnakes_linuxLogo.png")), JLabel.CENTER);
-        linuxLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),450,50,30);
+        linuxLogo.setBounds((int)Math.round(SCREEN_WIDTH*0.01953125),440,50,30);
         linuxLogo.setFocusable(false);
 
         qsTextArea = new JTextArea();
@@ -238,12 +239,14 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource()==backButton){
+            click.soundChoice(9);
             bgMusic.stop();
             bgMusic.soundChoice(7);
             new OSnakes_MainFrame(bgMusic);
             this.dispose();
         }
         if(e.getSource()==restartButton){
+            click.soundChoice(9);
             try {
                 new OSnakes_questionFrame(bgMusic);
             } catch (URISyntaxException | FileNotFoundException ex) {

@@ -14,6 +14,7 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
     private final JButton howButton;
     private final JButton homeButton;
     Sounds bgMusic;
+    Sounds click  = new Sounds();
 
     OSnakes_MainFrame(Sounds bgm) {
         bgMusic = bgm;
@@ -82,6 +83,7 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource()==startButton){
+            click.soundChoice(9);
             try {
                 new OSnakes_questionFrame(bgMusic);
             } catch (URISyntaxException | FileNotFoundException ex) {
@@ -90,10 +92,12 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
             this.dispose();
         }
         if(e.getSource()==howButton){
+            click.soundChoice(9);
             new OSnakes_howFrame(bgMusic);
             this.dispose();
         }
         if(e.getSource()==homeButton){
+            click.soundChoice(9);
             new MainGameFrame();
             this.dispose();
         }

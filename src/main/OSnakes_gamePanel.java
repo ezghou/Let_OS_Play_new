@@ -44,8 +44,11 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     private boolean gameOver = false;
     Timer timer;
     Random random;
+    Sounds bgMusic;
+    Sounds sfx  = new Sounds();
 
-    OSnakes_gamePanel(OSnakes_questionFrame questionFrame, int width, int height) {
+    OSnakes_gamePanel(OSnakes_questionFrame questionFrame, int width, int height, Sounds bgm) {
+        bgMusic = bgm;
         this.questionFrame = questionFrame;
         try{
             iosIcon = ImageIO.read(getClass().getResourceAsStream("/Resources/OSnakes_iosIcon.png"));
@@ -129,7 +132,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                     e.printStackTrace();
                 }
             }
-            else{ gameOver = true; }
+            else{
+                bgMusic.stop();
+                bgMusic.soundChoice(12);
+                gameOver = true; }
         }
         if((x[0] == windowsX) && (y[0] == windowsY)) {
             if(choiceWindows.equals(correctAnswer)){
@@ -140,6 +146,8 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 }
             }
             else{
+                bgMusic.stop();
+                bgMusic.soundChoice(12);
                 gameOver = true;
             }
         }
@@ -151,7 +159,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                     e.printStackTrace();
                 }
             }
-            else{ gameOver = true; }
+            else{
+                bgMusic.stop();
+                bgMusic.soundChoice(12);
+                gameOver = true; }
         }
         if((x[0] == linuxX) && (y[0] == linuxY)) {
             if(choiceLinux.equals(correctAnswer)){
@@ -161,10 +172,14 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                     e.printStackTrace();
                 }
             }
-            else{ gameOver = true; }
+            else{
+                bgMusic.stop();
+                bgMusic.soundChoice(12);
+                gameOver = true; }
         }
     }
     public void proceed() throws URISyntaxException, FileNotFoundException {
+        sfx.soundChoice(10);
         bodyParts++;
         points += 10;
         newOS();
@@ -190,6 +205,8 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
             running = false;
         }
         if(!running) {
+            bgMusic.stop();
+            bgMusic.soundChoice(12);
             timer.stop();
         }
     }
