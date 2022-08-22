@@ -13,8 +13,10 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
     private final JButton startButton;
     private final JButton howButton;
     private final JButton homeButton;
+    Sounds bgMusic;
 
-    OSnakes_MainFrame() {
+    OSnakes_MainFrame(Sounds bgm) {
+        bgMusic = bgm;
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -81,14 +83,14 @@ public class OSnakes_MainFrame extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if(e.getSource()==startButton){
             try {
-                new OSnakes_questionFrame();
+                new OSnakes_questionFrame(bgMusic);
             } catch (URISyntaxException | FileNotFoundException ex) {
                 ex.printStackTrace();
             }
             this.dispose();
         }
         if(e.getSource()==howButton){
-            new OSnakes_howFrame();
+            new OSnakes_howFrame(bgMusic);
             this.dispose();
         }
         if(e.getSource()==homeButton){

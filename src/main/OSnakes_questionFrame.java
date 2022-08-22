@@ -33,8 +33,13 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     public int id;
     public static int countQs;
     private final OSnakes_gamePanel gamePanel;
+    Sounds bgMusic;
 
-    OSnakes_questionFrame () throws URISyntaxException, FileNotFoundException {
+    OSnakes_questionFrame (Sounds bgm) throws URISyntaxException, FileNotFoundException {
+        bgMusic = bgm;
+        bgMusic.stop();
+        bgMusic.soundChoice(8);
+        bgMusic.playLoop();
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -168,7 +173,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         this.getContentPane().add(backButton);
         this.getContentPane().add(answer1);
 
-        editQuestions = new OSnakes_editQuestions(this);
+        editQuestions = new OSnakes_editQuestions(this, bgMusic);
         getQuestions();
     }
 
@@ -225,12 +230,14 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getSource()==backButton){
-            new OSnakes_MainFrame();
+            bgMusic.stop();
+            bgMusic.soundChoice(7);
+            new OSnakes_MainFrame(bgMusic);
             this.dispose();
         }
         if(e.getSource()==restartButton){
             try {
-                new OSnakes_questionFrame();
+                new OSnakes_questionFrame(bgMusic);
             } catch (URISyntaxException | FileNotFoundException ex) {
                 ex.printStackTrace();
             }
@@ -241,12 +248,14 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if(e.getSource()==backButton){
-            new OSnakes_MainFrame();
+            bgMusic.stop();
+            bgMusic.soundChoice(7);
+            new OSnakes_MainFrame(bgMusic);
             this.dispose();
         }
         if(e.getSource()==restartButton){
             try {
-                new OSnakes_questionFrame();
+                new OSnakes_questionFrame(bgMusic);
             } catch (URISyntaxException | FileNotFoundException ex) {
                 ex.printStackTrace();
             }

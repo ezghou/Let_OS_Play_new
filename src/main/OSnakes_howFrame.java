@@ -10,8 +10,10 @@ import java.net.URL;
 public class OSnakes_howFrame extends JFrame implements MouseListener {
     JLabel mainLogo;
     JButton backButton;
+    Sounds bgMusic;
 
-    OSnakes_howFrame() {
+    OSnakes_howFrame(Sounds bgm) {
+        bgMusic = bgm;
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
         URL iconURL = getClass().getResource("/Resources/titleIcon.png");
@@ -49,12 +51,12 @@ public class OSnakes_howFrame extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new OSnakes_MainFrame();
+        new OSnakes_MainFrame(bgMusic);
         this.dispose();
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        new OSnakes_MainFrame();
+        new OSnakes_MainFrame(bgMusic);
         this.dispose();
     }
     @Override

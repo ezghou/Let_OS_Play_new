@@ -10,6 +10,7 @@ import java.net.URL;
 public class OSnakes_splashFrame extends JFrame implements MouseListener {
 
     JLabel OSnakes_bg;
+    Sounds bgMusic = new Sounds();
 
     OSnakes_splashFrame() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
@@ -33,11 +34,13 @@ public class OSnakes_splashFrame extends JFrame implements MouseListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.getContentPane().add(OSnakes_bg);
+        bgMusic.soundChoice(7);
+        bgMusic.playLoop();
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        new OSnakes_MainFrame();
+        new OSnakes_MainFrame(bgMusic);
         this.dispose();
     }
 

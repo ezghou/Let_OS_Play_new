@@ -30,8 +30,10 @@ public class OSnakes_editQuestions {
     public String secondChoice;
     public String thirdChoice;
     public String fourthChoice;
+    Sounds bgMusic;
 
-    public OSnakes_editQuestions(OSnakes_questionFrame questionFrame) {
+    public OSnakes_editQuestions(OSnakes_questionFrame questionFrame, Sounds bgm) {
+        bgMusic = bgm;
         this.questionFrame = questionFrame;
         random = new Random();
         questionSize = questions.size()-1;
@@ -41,13 +43,13 @@ public class OSnakes_editQuestions {
     public final void getQuestion() throws URISyntaxException, FileNotFoundException {
         if(questions.isEmpty()){
             JOptionPane.showMessageDialog(null, "There are NO Questions to Ask");
-            new OSnakes_questionFrame();
+            new OSnakes_questionFrame(bgMusic);
             questionFrame.dispose();
         }
         else{
             if(DoneQuestions.size() == 70){
                 JOptionPane.showMessageDialog(null, "ALL QUESTIONS HAVE ALREADY BEEN ASKED");
-                new OSnakes_questionFrame();
+                new OSnakes_questionFrame(bgMusic);
                 questionFrame.dispose();
             }
             else{

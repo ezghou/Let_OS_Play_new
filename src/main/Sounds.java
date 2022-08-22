@@ -26,6 +26,12 @@ public class Sounds {
     String buttonClick = "/sound/buttonClick.wav";
     String MainMusic = "/sound/Komiku_-_12_-_Bicycle.wav";
     String lockdownBG = "/sound/Sneaky-Snitch.wav";
+    String OSnakes_bgm= "/sound/OSnakes_main.wav";
+    String OSnakes_quiz = "/sound/OSnakes_quiz.wav";
+    String OSnakes_click = "/sound/OSnakes_click.wav";
+    String OSnakes_eat = "/sound/OSnakes_eat.wav";
+    String OSnakes_win = "/sound/OSnakes_win.wav";
+    String OSnakes_gameOver = "/sound/OSnakes_gameOver.wav";
 
     /**
      * Play the required music or sfx.
@@ -40,6 +46,12 @@ public class Sounds {
                 case 4 -> musicURL = getClass().getResource(buttonClick);
                 case 5 -> musicURL = getClass().getResource(MainMusic);
                 case 6 -> musicURL = getClass().getResource(lockdownBG);
+                case 7 -> musicURL = getClass().getResource(OSnakes_bgm);
+                case 8 -> musicURL = getClass().getResource(OSnakes_quiz);
+                case 9 -> musicURL = getClass().getResource(OSnakes_click);
+                case 10 -> musicURL = getClass().getResource(OSnakes_eat);
+                case 11 -> musicURL = getClass().getResource(OSnakes_win);
+                case 12 -> musicURL = getClass().getResource(OSnakes_gameOver);
             }
 
             assert musicURL != null;

@@ -15,7 +15,7 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     private final OSnakes_questionFrame questionFrame;
     static final int SCREEN_WIDTH = 525;
     static final int SCREEN_HEIGHT = 400;
-    static final int DELAY = 170;
+    static final int DELAY = 100;
     static final int UNIT_SIZE = 20;
     static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
     final int[] x = new int[GAME_UNITS];
