@@ -1,3 +1,13 @@
+/**
+ * Panel for the OSnakes_questionFrame
+ * where the snake will move around
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import java.awt.*;
@@ -22,23 +32,16 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     final int[] y = new int[GAME_UNITS];
     private int bodyParts = 6;
     private int points;
-    private int iosX;
-    private int iosY;
-    private int windowsX;
-    private int windowsY;
-    private int ubuntuX;
-    private int ubuntuY;
-    private int linuxX;
-    private int linuxY;
+    private int iosX, iosY;
+    private int windowsX, windowsY;
+    private int ubuntuX, ubuntuY;
+    private int linuxX, linuxY;
     private String choiceIOS;
     private String choiceWindows;
     private String choiceUbuntu;
     private String choiceLinux;
     private String correctAnswer;
-    private BufferedImage iosIcon;
-    private BufferedImage windowsIcon;
-    private BufferedImage ubuntuIcon;
-    private BufferedImage linuxIcon;
+    private BufferedImage iosIcon, windowsIcon, ubuntuIcon, linuxIcon;
     private char direction = 'R';
     private boolean running = false;
     private boolean gameOver = false;
@@ -46,7 +49,9 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     Random random;
     Sounds bgMusic;
     Sounds sfx  = new Sounds();
-
+    /**
+     * Initialize icon images and panel properties.
+     */
     OSnakes_gamePanel(OSnakes_questionFrame questionFrame, int width, int height, Sounds bgm) {
         bgMusic = bgm;
         this.questionFrame = questionFrame;
@@ -77,6 +82,9 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         draw(g);
     }
+    /**
+     * Draw the snake as it moves in the panel
+     */
     public void draw(Graphics g) {
         if(running && !gameOver) {
             g.drawImage(iosIcon, iosX, iosY, null);
@@ -101,16 +109,32 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
             gameOver(g);
         }
     }
+    /**
+     * Generate new positions for the OS icons.
+     */
     public void newOS(){
-        iosX = random.nextInt(SCREEN_WIDTH/UNIT_SIZE)*UNIT_SIZE;
-        iosY = random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
-        windowsX = random.nextInt(SCREEN_WIDTH/UNIT_SIZE)*UNIT_SIZE;
-        windowsY = random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
-        ubuntuX = random.nextInt(SCREEN_WIDTH/UNIT_SIZE)*UNIT_SIZE;
-        ubuntuY = random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
-        linuxX = random.nextInt(SCREEN_WIDTH/UNIT_SIZE)*UNIT_SIZE;
-        linuxY = random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
+        iosX = getXValue();
+        iosY = getYValue();
+        do {
+            windowsX = getXValue();
+            windowsY = getYValue();
+        } while (windowsX == iosX && windowsY == iosY);
+        do {
+            ubuntuX = getXValue();
+            ubuntuY = getYValue();
+        } while ((ubuntuX == iosX && ubuntuY == iosY) || (ubuntuX == windowsX && ubuntuY == windowsY));
+        do {
+            linuxX = getXValue();
+            linuxY = getYValue();
+        } while ((linuxX == iosX && linuxY == iosY) || (linuxX == windowsX && linuxY == windowsY) || (linuxX == ubuntuX && linuxY == ubuntuY));
     }
+    public int getXValue(){
+        return random.nextInt(SCREEN_WIDTH/UNIT_SIZE)*UNIT_SIZE;
+    }
+    public int getYValue(){
+        return random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
+    }
+
     public void move(){
         for(int i = bodyParts;i>0;i--) {
             x[i] = x[i-1];

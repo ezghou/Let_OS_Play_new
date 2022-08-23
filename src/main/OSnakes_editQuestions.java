@@ -1,3 +1,13 @@
+/**
+ * Gets a random and unique question from
+ * the fetched questions data.
+ *
+ * @author  Eg Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,6 +30,9 @@ public class OSnakes_editQuestions {
     String answer;
     String[] choices = new String[4];
 
+    /**
+     * Initialize the fetched questions
+     */
     public OSnakes_editQuestions(){
         readQuestions = new OSnakes_readQuestions();
         id = readQuestions.getID();
@@ -33,7 +46,10 @@ public class OSnakes_editQuestions {
         questionSize = questions.size()-1;
         setRandomID();
     }
-
+    /**
+     * Generate random and unique question id.
+     * Add each unique question id to doneQuestions arrayList
+     */
     public void setRandomID(){
         question_id = random.nextInt(questionSize);
         if(doneQuestions.size()<=0){
@@ -54,7 +70,10 @@ public class OSnakes_editQuestions {
         }
         System.out.println("size: "+doneQuestions.size());
     }
-
+    /**
+     * Set the chosen question and its respective data
+     * to be displayed in the question frame
+     */
     public void setQuestion(int question_id){
         currentQuestion = questions.get(question_id);
         setChoices(question_id);
