@@ -1,3 +1,12 @@
+/**
+ * Splash screen of TheLadder
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import javax.swing.*;
@@ -6,11 +15,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 
+@SuppressWarnings("ALL")
 public class TheLadder_splashFrame extends JFrame implements MouseListener {
-
-        JLabel OSnakes_bg;
-        Sounds click = new Sounds();
-
+    JLabel OSnakes_bg;
+    Sounds click = new Sounds();
     TheLadder_splashFrame() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;

@@ -1,3 +1,13 @@
+/**
+ * Gets a random and unique question from
+ * the fetched questions data.
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import java.util.ArrayList;

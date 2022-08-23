@@ -1,3 +1,13 @@
+/**
+ * Display the instructions on how
+ * to play TheLadder
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import javax.swing.*;

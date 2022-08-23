@@ -1,3 +1,12 @@
+/**
+ * The frame where the multiple choice questions will be displayed
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import javax.swing.*;
@@ -14,7 +23,6 @@ import java.util.logging.Logger;
 
 @SuppressWarnings("ALL")
     public class TheLadder_Quiz extends JFrame implements ActionListener {
-
         private final JLabel mainLogo;
         private final JButton Peek;
         private final JButton Skip;
@@ -42,16 +50,15 @@ import java.util.logging.Logger;
         int buttonClicksB = 0;
         int buttonClicksC = 0;
         int buttonClicksD = 0;
-
         String guess = "";
         int checkChoiceA;
         int checkChoiceB;
         int checkChoiceC;
         int checkChoiceD;
-
         Sounds click = new Sounds();
 
-        TheLadder_editQuestions editQuestions;
+        //TheLadder_editQuestions editQuestions;
+        OSnakes_editQuestions editQuestions;
         ArrayList<String> choiceList = new ArrayList<>();
         public static String question;
         public static String correctAnswer;
@@ -309,8 +316,7 @@ import java.util.logging.Logger;
             this.getContentPane().add(rButtonD);
             this.getContentPane().add(mainLogo);
 
-            editQuestions = new TheLadder_editQuestions();
-            //getQuestions();
+            editQuestions = new OSnakes_editQuestions();
             displayMCQ();
             Next.setEnabled(false);
         }
@@ -445,7 +451,6 @@ import java.util.logging.Logger;
         } catch (Exception ex) {
             Logger.getLogger(TheLadder_Quiz.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //getQuestions();
         displayMCQ();
         buttonClicksA = 0;
         buttonClicksB = 0;
@@ -515,7 +520,6 @@ import java.util.logging.Logger;
                 int wrong = 0;
                 while(true){
                     int gett = rand.nextInt(3);
-
                     if(ans.equals(answer_A.getText()) && gett != 0){
                         wrong = gett;
                         break;

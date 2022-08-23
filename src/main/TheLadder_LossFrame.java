@@ -6,7 +6,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
 
-
     @SuppressWarnings("ALL")
     public class TheLadder_LossFrame extends JFrame implements MouseListener {
         JLabel mainLogo;

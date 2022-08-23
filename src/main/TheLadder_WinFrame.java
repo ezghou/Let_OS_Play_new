@@ -1,3 +1,13 @@
+/**
+ * Display the win screen when the user
+ * gains a score more than 17 points
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import javax.swing.*;
