@@ -57,8 +57,7 @@ import java.util.logging.Logger;
         int checkChoiceD;
         Sounds click = new Sounds();
 
-        //TheLadder_editQuestions editQuestions;
-        OSnakes_editQuestions editQuestions;
+        EditQuestions editQuestions;
         ArrayList<String> choiceList = new ArrayList<>();
         public static String question;
         public static String correctAnswer;
@@ -316,7 +315,7 @@ import java.util.logging.Logger;
             this.getContentPane().add(rButtonD);
             this.getContentPane().add(mainLogo);
 
-            editQuestions = new OSnakes_editQuestions();
+            editQuestions = new EditQuestions();
             displayMCQ();
             Next.setEnabled(false);
         }

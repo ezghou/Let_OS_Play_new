@@ -6,48 +6,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Random;
 
 import static main.LockdownGameLogic.Constants.*;
 
 public class Lockdown_QuestionsHandler implements Runnable {
     Lockdown_editQuestions editQuestions;
-    ArrayList<String> choiceList = new ArrayList<>();
-    public static String question;
     public static String correctAnswer;
-    Random random = new Random();
-    public String choice1;
-    public String choice2;
-    public String choice3;
-    public String choice4;
-    public int id;
-    public static int countQs = 0;
     JTextArea questionText = new JTextArea();
     JTextArea answer_A = new JTextArea();
     JTextArea answer_B = new JTextArea();
     JTextArea answer_C = new JTextArea();
     JTextArea answer_D = new JTextArea();
-
     JTextArea coinsText = new JTextArea();
-
     JTextArea timeAlive = new JTextArea();
-
     private final Thread questionThread;
-
     private final Debug questionTimerRefresh = new Debug();
     private boolean changeQuestion = false;
-
     Sounds checkAnswer = new Sounds();
-
-    public Lockdown_QuestionsHandler(JPanel parent) throws FileNotFoundException, URISyntaxException {
-
-        /**
-         * All child components should be added in the third panel
-         * then the third panel is added to the parent panel.
-         */
+    /**
+     * All child components should be added in the third panel
+     * then the third panel is added to the parent panel.
+     */
+    public Lockdown_QuestionsHandler(JPanel parent) {
         JPanel thirdPanel = new JPanel();
         thirdPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
         //thirdPanel.setLayout(new GridLayout(3, 1));
@@ -109,58 +89,25 @@ public class Lockdown_QuestionsHandler implements Runnable {
         fifthPanel.add(timeAlive);
 
         editQuestions = new Lockdown_editQuestions();
-        getQuestions(); //setInitial question
+        displayMCQ();
+        //getQuestions(); //setInitial question
 
         parent.add(thirdPanel);
         parent.add(fifthPanel);
     }
     /**
-     * Method for setting initial question, need to be called to set new question
-     * @throws URISyntaxException
-     * @throws FileNotFoundException
+     * Display the random multiple choice question
      */
-    public final void getQuestions() throws URISyntaxException, FileNotFoundException {
-        editQuestions.getQuestion();
-        question = editQuestions.question;
-        id = editQuestions.question_id;
-        setQuestion();
-        setChoices();
-    }
-
-    public final void setQuestion(){
-        countQs++;
-        //System.out.println("countQs: " + countQs);
-        question = question.replace("\n", " ").replace("\r", " ");
-        questionText.setText(question + "\n \n"); //Set question in textarea
-        correctAnswer = editQuestions.CorrectAnswer;
-    }
-    public final void setChoices(){
-        choice1 = editQuestions.firstChoice;
-        choice2 = editQuestions.secondChoice;
-        choice3 = editQuestions.thirdChoice;
-        choice4 = editQuestions.fourthChoice;
-        choiceList.add(choice1);
-        choiceList.add(choice2);
-        choiceList.add(choice3);
-        choiceList.add(choice4);
-        int size;
-        int index;
-
-        for(size = choiceList.size(); size > 0; size--){
-            index = random.nextInt(size);
-            switch (size) {
-                case 4 -> choice1 = choiceList.get(index);
-                case 3 -> choice2 = choiceList.get(index);
-                case 2 -> choice3 = choiceList.get(index);
-                case 1 -> choice4 = choiceList.get(index);
-                default -> { }
-            }
-            choiceList.remove(index);
-        }
-        answer_A.setText(choice1); //set choice in textarea
-        answer_B.setText(choice2); //set choice in textarea
-        answer_C.setText(choice3); //set choice in textarea
-        answer_D.setText(choice4); //set choice in textarea
+    public void displayMCQ(){
+        editQuestions.setRandomID();
+        questionText.setText(editQuestions.getQuestion());
+        String[] choices = editQuestions.getChoices();
+        answer_A.setText(choices[0]);
+        answer_B.setText(choices[1]);
+        answer_C.setText(choices[2]);
+        answer_D.setText(choices[3]);
+        correctAnswer = editQuestions.getCorrectAnswer();
+        System.out.println("answer: "+correctAnswer);
     }
 
     public void setupChoices(JTextArea jTextArea){
@@ -186,11 +133,9 @@ public class Lockdown_QuestionsHandler implements Runnable {
                     questionText.setBackground(Color.green);
                     return;
                 }
-
                 checkAnswer.soundChoice(3);
                 questionText.setBackground(Color.RED);
             }
-
             @Override
             public void mouseReleased(MouseEvent e) {
                 super.mouseReleased(e);
@@ -200,7 +145,6 @@ public class Lockdown_QuestionsHandler implements Runnable {
             }
         });
     }
-
     /**
      * Added a semi game loop to have a
      * refresh timer for the questions
@@ -216,12 +160,8 @@ public class Lockdown_QuestionsHandler implements Runnable {
             if (questionTimerRefresh.elapsedTimeInSecond >= 8 && changeQuestion) {
                 questionTimerRefresh.resetTime();
                 changeQuestion = false;
-                try {
-                    getQuestions();
-                    questionText.setBackground(Color.BLACK);
-                } catch (URISyntaxException | FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+                displayMCQ();
+                questionText.setBackground(Color.BLACK);
             }
 
         }

@@ -12,8 +12,8 @@ package main;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class OSnakes_editQuestions {
-    OSnakes_readQuestions readQuestions;
+public class EditQuestions {
+    ReadQuestions readQuestions;
     ArrayList<String> questions;
     ArrayList<String> choice1;
     ArrayList<String> choice2;
@@ -33,8 +33,8 @@ public class OSnakes_editQuestions {
     /**
      * Initialize the fetched questions
      */
-    public OSnakes_editQuestions(){
-        readQuestions = new OSnakes_readQuestions();
+    public EditQuestions(){
+        readQuestions = new ReadQuestions();
         id = readQuestions.getID();
         questions = readQuestions.getQuestions();
         choice1 = readQuestions.getChoice1();

@@ -5,8 +5,6 @@ import main.LockdownGameLogic.GamePanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
@@ -29,11 +27,7 @@ import static main.LockdownGameLogic.Constants.*;
         Sounds bg = new Sounds();
 
         Lockdown_MainFrame() {
-            URL iconURL = getClass().getResource("/Resources/titleIcon.png");
-            assert iconURL != null;
-            ImageIcon titleIcon = new ImageIcon(iconURL);
             Constants.setUp(this);
-
             mainLogo = new JLabel(new ImageIcon(getClass().getResource("/Resources/Lockdown_MainFrame.png")));
             mainLogo.setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
             mainLogo.setVerticalAlignment(JLabel.CENTER);
@@ -81,7 +75,7 @@ import static main.LockdownGameLogic.Constants.*;
             this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
             this.setLayout(null);
             this.setResizable(false);
-            this.setIconImage(titleIcon.getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/Resources/titleIcon.png")).getImage());
             this.getContentPane().setBackground(new Color(3,10,33));
             this.setLocationRelativeTo(null);
             this.setVisible(false);

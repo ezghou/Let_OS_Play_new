@@ -3,18 +3,12 @@ package main.LockdownGameLogic;
 import main.LockdownGameLogic.Entities.Chara;
 import main.LockdownGameLogic.Entities.CharaProjectile;
 import main.LockdownGameLogic.Entities.EnemyChara;
-import main.Lockdown_MainFrame;
-import main.Lockdown_editQuestions;
-import main.TheLadder_editQuestions;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Random;
 
 import static main.LockdownGameLogic.Constants.*;
 
@@ -25,19 +19,20 @@ import static main.LockdownGameLogic.Constants.*;
  */
 public class GamePanel extends JPanel implements Runnable{
     public ArrayList<BufferedImage> sprites = new ArrayList<>();
-    private ArrayList<GridHandler> grids = new ArrayList<>();
-    private ArrayList<Chara> charas = new ArrayList<>();
-    private ArrayList<EnemyChara> enemyCharas = new ArrayList<>();
-    private ArrayList<SelectorHandler> selectors = new ArrayList<>();
+    private final ArrayList<GridHandler> grids = new ArrayList<>();
+    private final ArrayList<Chara> charas = new ArrayList<>();
+    private final ArrayList<EnemyChara> enemyCharas = new ArrayList<>();
+    private final ArrayList<SelectorHandler> selectors = new ArrayList<>();
 
     //Var for displaying question
-    private Thread gameThread;
-    private Debug debug;
-    private Debug spawnerDebug, spawnerDebug2, waveDebug;
+    private final Thread gameThread;
+    private final Debug debug;
+    private final Debug spawnerDebug;
+    private final Debug spawnerDebug2;
+    private final Debug waveDebug;
     private float timeSpawn = 10;
     private float waveTime = 60;
 
-    private BufferedImage tempImg;
     public GamePanel(){
         setFocusable(true);
         debug = new Debug();
@@ -436,7 +431,7 @@ public class GamePanel extends JPanel implements Runnable{
                     g.drawString("50", selectorPaddingLeft + (gridWidth - g.getFontMetrics().stringWidth("50")), initY + (x * gridHeight) + g.getFontMetrics().getHeight());
                 }
                 case 1 -> {
-                    tempImg = doctor;
+                    BufferedImage tempImg = doctor;
                     g.drawImage(doctor, Xcenter - (doctor.getWidth()/2), Ycenter - (doctor.getHeight()/2), null);
                     g.drawString("100", selectorPaddingLeft + (gridWidth - g.getFontMetrics().stringWidth("100")), initY + (x * gridHeight) + g.getFontMetrics().getHeight());
                 }

@@ -31,7 +31,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
     private final JButton restartButton;
     private final JTextArea answer1;
 
-    OSnakes_editQuestions editQuestions;
+    EditQuestions editQuestions;
     ArrayList<String> choiceList = new ArrayList<>();
     public static String question;
     public static String correctAnswer;
@@ -192,7 +192,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         this.getContentPane().add(backButton);
         //this.getContentPane().add(answer1);
 
-        editQuestions = new OSnakes_editQuestions();
+        editQuestions = new EditQuestions();
         displayMCQ();
     }
     /**

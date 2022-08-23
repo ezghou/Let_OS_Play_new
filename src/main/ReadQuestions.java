@@ -22,7 +22,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 @SuppressWarnings("ALL")
-public class OSnakes_readQuestions {
+public class ReadQuestions {
     ArrayList<String> header = new ArrayList<>();
     ArrayList<Integer> id = new ArrayList<>();
     ArrayList<String> topic = new ArrayList<>();
@@ -39,7 +39,7 @@ public class OSnakes_readQuestions {
     /**
      *  Access the questions file from inside the jar/exe.
      */
-    public OSnakes_readQuestions(){
+    public ReadQuestions(){
         formatter = new DataFormatter();
         try( InputStream inputStream = this.getClass().getResourceAsStream("/questions.xlsx")){
             XSSFWorkbook importedFile = new XSSFWorkbook(inputStream);
