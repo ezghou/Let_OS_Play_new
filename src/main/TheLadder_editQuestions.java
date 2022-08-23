@@ -9,7 +9,6 @@ import java.util.Random;
     public class TheLadder_editQuestions {
         TheLadder_Quiz questionFrame;
         OSnakes_readQuestions readQuestions = new OSnakes_readQuestions();
-
         ArrayList<String> questions = readQuestions.getQuestions();
         ArrayList<String> choice1 = readQuestions.getChoice1();
         ArrayList<String> choice2 = readQuestions.getChoice2();
@@ -37,6 +36,12 @@ import java.util.Random;
             questionSize = questions.size()-1;
             generatedQs = 0;
         }
+
+        /**
+         * Set question to be displayed in quiz frame
+         * @throws URISyntaxException
+         * @throws FileNotFoundException
+         */
 
         public final void getQuestion() throws URISyntaxException, FileNotFoundException {
             if(questions.isEmpty()){
@@ -78,6 +83,10 @@ import java.util.Random;
                 }
             }
         }
+
+        /**
+         * Set choices from the questions set in getQuestions()
+         */
         public void getChoices(){
             firstChoice = choice1.get(choice_id);
             secondChoice = choice2.get(choice_id);

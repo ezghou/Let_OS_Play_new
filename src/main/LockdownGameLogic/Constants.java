@@ -2,7 +2,6 @@ package main.LockdownGameLogic;
 
 import main.Lockdown_MainFrame;
 import main.Lockdown_QuestionsHandler;
-import main.MainGameFrame;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -27,13 +26,9 @@ public class Constants {
     public static final int gridWidth = lawnWidth / gridRowCount;
     public static final int gridHeight = lawnHeight /gridColumnCount;
     public static final int selectorPaddingLeft =  40;
-
     public static final float enemyMovementSpeed = 0.4f;
     public static final Debug globalDebug = new Debug();
 
-
-
-    //NOT SO CONSTANT VARIABLES
     public static boolean GameOver = false;
     public static BufferedImage testAtlas;
     public static BufferedImage taxPayer;
