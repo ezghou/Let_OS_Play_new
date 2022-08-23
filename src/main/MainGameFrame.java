@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,11 +24,8 @@ public class MainGameFrame extends JFrame implements ActionListener {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;
 
-        URL iconURL = getClass().getResource("/Resources/titleIcon.png");
-        assert iconURL != null;
-        ImageIcon titleIcon = new ImageIcon(iconURL);
-
-        logo = new JLabel(new ImageIcon(getClass().getResource("/Resources/LogoSmall.png")));
+        logo = new JLabel();
+        logo.setIcon(new ImageIcon(getClass().getResource("/Resources/LogoSmall.png")));
         logo.setVerticalAlignment(JLabel.CENTER);
         logo.setHorizontalAlignment(JLabel.CENTER);
         logo.setBounds(230, 0, 600, 120);
@@ -64,7 +60,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setResizable(false);
-        this.setIconImage(titleIcon.getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Resources/titleIcon.png")).getImage());
         this.getContentPane().setBackground(new Color(6, 19, 44));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
