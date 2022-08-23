@@ -1,3 +1,13 @@
+/**
+ * The frame where the questions will be displayed
+ * and where the OSnakes_gamePanel will be attached
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main;
 
 import javax.swing.*;
@@ -185,7 +195,9 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         editQuestions = new OSnakes_editQuestions();
         displayMCQ();
     }
-
+    /**
+     * Display the random multiple choice question
+     */
     public void displayMCQ(){
         editQuestions.setRandomID();
         qsTextArea.setText(editQuestions.getQuestion());

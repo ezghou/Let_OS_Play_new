@@ -1,12 +1,15 @@
-package main;
-
-/*
-  Responsible for fetching and reading the questions
-  from the questionsFile.xlsx based on the category id.
-
-  @author  Erica Talahiban
+/**
+ * Responsible for fetching and reading the questions
+ *  from the questions.xlsx
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
  * @version 1.0
  */
+
+package main;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

@@ -11,7 +11,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 /**
  * This class controls the background music and the sfx.
  *
- * @author  EzGhou
+ * @author  EG Renz Go
  * @author  Therese Nuelle Roca
  * @author  Erica Talahiban
  */

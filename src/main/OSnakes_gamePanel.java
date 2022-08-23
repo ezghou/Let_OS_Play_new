@@ -110,7 +110,7 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
         }
     }
     /**
-     * Generate new positions for the OS icons.
+     * Generate new random and unique positions for the OS icons.
      */
     public void newOS(){
         iosX = getXValue();
@@ -134,7 +134,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
     public int getYValue(){
         return random.nextInt(SCREEN_HEIGHT/UNIT_SIZE)*UNIT_SIZE;
     }
-
+    /**
+     * Allows the snake to move around the panel and
+     * change directions
+     */
     public void move(){
         for(int i = bodyParts;i>0;i--) {
             x[i] = x[i-1];
@@ -147,6 +150,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
             case 'R' -> x[0] = x[0] + UNIT_SIZE;
         }
     }
+    /**
+     * Check if the OS icon collided with the head of the snake
+     * contains the correct answer to the question
+     */
     public void checkOS() throws URISyntaxException {
         if((x[0] == iosX) && (y[0] == iosY)) {
             if(choiceIOS.equals(correctAnswer)){
@@ -194,6 +201,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
                 gameOver = true; }
         }
     }
+    /**
+     * If the snake collided with the correct OS icon,
+     * the snake will be longer and the game continues
+     */
     public void proceed() throws URISyntaxException, FileNotFoundException {
         sfx.soundChoice(10);
         bodyParts++;
@@ -201,6 +212,10 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
         newOS();
         questionFrame.displayMCQ();
     }
+    /**
+     * Check if the head of the snake collides with any of its body parts
+     * or if it collides with any end side of the panel
+     */
     public void checkCollisions() {
         for(int i = bodyParts;i>0;i--) {
             if ((x[0] == x[i]) && (y[0] == y[i])) {
@@ -244,7 +259,9 @@ public class OSnakes_gamePanel extends JPanel implements ActionListener {
         }
         repaint();
     }
-
+    /**
+     * Detect what arrow keys are pressed.
+     */
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e){

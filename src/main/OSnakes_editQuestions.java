@@ -2,7 +2,7 @@
  * Gets a random and unique question from
  * the fetched questions data.
  *
- * @author  Eg Renz Go
+ * @author  EG Renz Go
  * @author  Thereze Nuelle Roca
  * @author  Erica Talahiban
  * @version 1.0
