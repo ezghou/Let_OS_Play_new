@@ -55,7 +55,7 @@ public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         click.soundChoice(4);
-        new Lockdown_MainFrame();
+        MainGameFrame.theLockdown_mainFrame.setVisible(true);
         this.dispose();
     }
     @Override
