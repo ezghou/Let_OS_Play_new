@@ -68,7 +68,6 @@ public class OSnakes_editQuestions {
             doneQuestions.add(question_id);
             setQuestion(question_id);
         }
-        System.out.println("size: "+doneQuestions.size());
     }
     /**
      * Set the chosen question and its respective data

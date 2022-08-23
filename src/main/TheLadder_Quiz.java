@@ -309,63 +309,31 @@ import java.util.logging.Logger;
             this.getContentPane().add(rButtonD);
             this.getContentPane().add(mainLogo);
 
-            editQuestions = new TheLadder_editQuestions(this);
-            getQuestions();
+            editQuestions = new TheLadder_editQuestions();
+            //getQuestions();
+            displayMCQ();
             Next.setEnabled(false);
         }
 
-
-    public final void getQuestions() throws URISyntaxException, FileNotFoundException {
-        editQuestions.getQuestion();
-        question = editQuestions.question;
-        id = editQuestions.question_id;
-        setQuestion();
-        setChoices();
+    /**
+     * Display the random multiple choice question
+     */
+    public void displayMCQ(){
+        editQuestions.setRandomID();
+        questionText.setText(editQuestions.getQuestion());
+        String[] choices = editQuestions.getChoices();
+        answer_A.setText(choices[0]);
+        answer_B.setText(choices[1]);
+        answer_C.setText(choices[2]);
+        answer_D.setText(choices[3]);
+        correctAnswer = editQuestions.getCorrectAnswer();
+        System.out.println("answer: "+correctAnswer);
     }
-
-    public final void setQuestion(){
-        countQs++;
-        question = question.replace("\n", " ").replace("\r", " ");
-        questionText.setText(question + "\n \n");
-        correctAnswer = editQuestions.CorrectAnswer;
-        System.out.println(correctAnswer);
-    }
-
-    public final void setChoices(){
-        choice1 = editQuestions.firstChoice;
-        choice2 = editQuestions.secondChoice;
-        choice3 = editQuestions.thirdChoice;
-        choice4 = editQuestions.fourthChoice;
-        choiceList.add(choice1);
-        choiceList.add(choice2);
-        choiceList.add(choice3);
-        choiceList.add(choice4);
-        int size;
-        int index;
-
-        for(size = choiceList.size(); size > 0; size--){
-            index = random.nextInt(size);
-            switch (size) {
-                case 4 -> choice1 = choiceList.get(index);
-                case 3 -> choice2 = choiceList.get(index);
-                case 2 -> choice3 = choiceList.get(index);
-                case 1 -> choice4 = choiceList.get(index);
-                default -> { }
-            }
-            choiceList.remove(index);
-        }
-        answer_A.setText(choice1);
-        answer_B.setText(choice2);
-        answer_C.setText(choice3);
-        answer_D.setText(choice4);
-    }
-
-    /**This method shows the user if the
+    /**
+     * This method shows the user if the
      * user's answer is correct or not.
-     *
      */
     public void displayAnswer(){
-
         if(guess.equals(correctAnswer)){
             try {
                 click.soundChoice(2);
@@ -373,7 +341,6 @@ import java.util.logging.Logger;
                 Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
             //Adding points and diplaying it.
-
             //totalPoints++;
             coins = coins +10;
             score++;
@@ -381,14 +348,12 @@ import java.util.logging.Logger;
             Money.setText("Coins: " + coins);
         }
         else{
-
             try {
                 click.soundChoice(3);
             } catch (Exception ex) {
                 Logger.getLogger(MainGameFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         //Changing the color of the border of the TextArea, red if it is wrong,
         //and green for the right answer.
         if(checkChoiceA == 0){
@@ -427,14 +392,14 @@ import java.util.logging.Logger;
         }
     }
 
-    /**It will submit the answer of the user
+    /**
+     * It will submit the answer of the user
      * so that the game can check it.
      */
     public void submit(){
         if(guess.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please submit an answer, it won't hurt.");
         }
-
         else{
             if (answer_A.getText().equals(correctAnswer)){
                 checkChoiceA = 1;
@@ -442,28 +407,24 @@ import java.util.logging.Logger;
             else{
                 checkChoiceA = 0;
             }
-
             if (answer_B.getText().equals(correctAnswer)){
                 checkChoiceB = 1;
             }
             else{
                 checkChoiceB = 0;
             }
-
             if (answer_C.getText().equals(correctAnswer)){
                 checkChoiceC = 1;
             }
             else{
                 checkChoiceC = 0;
             }
-
             if (answer_D.getText().equals(correctAnswer)){
                 checkChoiceD = 1;
             }
             else{
                 checkChoiceD = 0;
             }
-
             displayAnswer();
             rButtonA.setEnabled(false);
             rButtonB.setEnabled(false);
@@ -484,18 +445,17 @@ import java.util.logging.Logger;
         } catch (Exception ex) {
             Logger.getLogger(TheLadder_Quiz.class.getName()).log(Level.SEVERE, null, ex);
         }
-        getQuestions();
+        //getQuestions();
+        displayMCQ();
         buttonClicksA = 0;
         buttonClicksB = 0;
         buttonClicksC = 0;
         buttonClicksD = 0;
-
         /*
         if(questionCount == total_questions){
             nextQ.setVisible(false);
             viewResult.setVisible(true);
         }
-
          */
 
         //Making the TextArea's border black after running the displayAnswer
@@ -527,16 +487,13 @@ import java.util.logging.Logger;
 
     public void peek(){
         String ans = correctAnswer;
-
         if(coins < 40){
             JOptionPane.showMessageDialog(null, "You don't have sufficient coins");
         }
-
         else{
             //Checking what percentage the user gets [40% - 90%]
             Random rand = new Random();
             int percentage;
-
             while(true){
                 percentage = rand.nextInt(90);
 
@@ -576,7 +533,6 @@ import java.util.logging.Logger;
                         break;
                     }
                 }
-
                 switch(wrong){
                     case 0:
                         JOptionPane.showMessageDialog(null, "The answer for this question is " + answer_A.getText());
@@ -607,7 +563,8 @@ import java.util.logging.Logger;
             JOptionPane.showMessageDialog(null, "You don'to have sufficient coins");
         }
         else{
-            getQuestions();
+            //getQuestions();
+            displayMCQ();
             coins = coins - 60;
             Money.setText("Coins: " + coins);
         }
@@ -622,15 +579,11 @@ import java.util.logging.Logger;
             Money.setText("Coins: " + coins);
         }
     }
-
-
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == Peek) {
             click.soundChoice(4);
             peek();
         }
-
         if (e.getSource() == Skip) {
             try {
                 click.soundChoice(4);
@@ -641,12 +594,10 @@ import java.util.logging.Logger;
                 throw new RuntimeException(ex);
             }
         }
-
         if (e.getSource() == Reveal) {
             click.soundChoice(4);
             reveal();
         }
-
         if (e.getSource() == Next) {
             try {
                 next();
@@ -660,7 +611,6 @@ import java.util.logging.Logger;
                 throw new RuntimeException(ex);
             }
         }
-
         if (e.getSource() == ViewResult) {
             click.soundChoice(4);
             if(score > 17) {
@@ -672,18 +622,15 @@ import java.util.logging.Logger;
                 this.dispose();
             }
         }
-
         if (e.getSource() == Back) {
             click.soundChoice(4);
             countQs = 0;
             MainGameFrame.theLadder_mainFrame.setVisible(true);
             this.dispose();
         }
-
         if (e.getSource() == Submit) {
             submit();
         }
-
         if (e.getSource() == rButtonA) {
             buttonClicksA++;
             if (buttonClicksA <= 1) {
@@ -694,14 +641,12 @@ import java.util.logging.Logger;
                 }
                 guess = answer_A.getText();
             }
-
             //Button Click variable is created to avoid multiple clicking of the
             //JRadioButton (Creating a bug in the sound)
             buttonClicksB = 0;
             buttonClicksC = 0;
             buttonClicksD = 0;
         }
-
         if (e.getSource() == rButtonB) {
             buttonClicksB++;
             if (buttonClicksB <= 1) {
@@ -716,7 +661,6 @@ import java.util.logging.Logger;
             buttonClicksC = 0;
             buttonClicksD = 0;
         }
-
         if (e.getSource() == rButtonC) {
             buttonClicksC++;
             if (buttonClicksC <= 1) {
@@ -731,7 +675,6 @@ import java.util.logging.Logger;
             buttonClicksA = 0;
             buttonClicksD = 0;
         }
-
         if (e.getSource() == rButtonD) {
             buttonClicksD++;
             if (buttonClicksD <= 1) {

@@ -1,3 +1,11 @@
+/**
+ * Contains the Main Class
+ *
+ * @author  EG Renz Go
+ * @author  Therese Nuelle Roca
+ * @author  Erica Talahiban
+ */
+
 package main;
 
 import javax.swing.*;
@@ -14,9 +22,7 @@ public class MainGameFrame extends JFrame implements ActionListener {
     public static  TheLadder_MainFrame theLadder_mainFrame;
     public static Lockdown_MainFrame theLockdown_mainFrame;
     JLabel logo;
-    JButton selectLadder;
-    JButton selectLockdown;
-    JButton selectOSNAKES;
+    JButton selectLadder, selectLockdown, selectOSNAKES;
     Sounds click = new Sounds();
     Sounds bg = new Sounds();
 
@@ -76,7 +82,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
         new SplashScreen();
     }
 
-
     public void music(){
         try {
             bg.soundChoice(5);
@@ -87,7 +92,6 @@ public class MainGameFrame extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == selectLadder) {
             try {
                 click.soundChoice(4);

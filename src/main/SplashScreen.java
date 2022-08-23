@@ -1,3 +1,11 @@
+/**
+ * Splash screen of Let OS Play game program
+ *
+ * @author  EG Renz Go
+ * @author  Therese Nuelle Roca
+ * @author  Erica Talahiban
+ */
+
 package main;
 
 import javax.swing.*;
@@ -5,7 +13,6 @@ import java.awt.*;
 
 @SuppressWarnings("ALL")
 public class SplashScreen extends JFrame {
-
     SplashScreen() throws InterruptedException {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;

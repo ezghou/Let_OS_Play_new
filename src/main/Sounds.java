@@ -1,3 +1,11 @@
+/**
+ * This class controls the background music and the sfx.
+ *
+ * @author  EG Renz Go
+ * @author  Therese Nuelle Roca
+ * @author  Erica Talahiban
+ */
+
 package main;
 
 import java.io.IOException;
@@ -8,13 +16,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- * This class controls the background music and the sfx.
- *
- * @author  EG Renz Go
- * @author  Therese Nuelle Roca
- * @author  Erica Talahiban
- */
 public class Sounds {
 
     Clip clip;
