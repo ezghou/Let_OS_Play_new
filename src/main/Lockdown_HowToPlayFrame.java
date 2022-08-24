@@ -1,3 +1,12 @@
+/**
+ * Display the instructions on
+ * how to play the Lockdown game
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
 package main;
 
 import javax.swing.*;
@@ -5,14 +14,11 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
-
-public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
-
 @SuppressWarnings("ALL")
+public class Lockdown_HowToPlayFrame extends JFrame implements MouseListener{
     JLabel mainLogo;
     JButton backButton;
     Sounds click = new Sounds();
-
     Lockdown_HowToPlayFrame() {
         int SCREEN_WIDTH = 1060;
         int SCREEN_HEIGHT = 660;

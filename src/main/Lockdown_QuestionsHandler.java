@@ -1,3 +1,12 @@
+/**
+ * Display the multiple-choice question
+ * on the bottom of the screen
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
 package main;
 
 import main.LockdownGameLogic.Debug;
@@ -8,7 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static main.LockdownGameLogic.Constants.*;
-
+@SuppressWarnings("ALL")
 public class Lockdown_QuestionsHandler implements Runnable {
     Lockdown_editQuestions editQuestions;
     public static String correctAnswer;

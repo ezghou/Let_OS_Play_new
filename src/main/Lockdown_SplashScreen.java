@@ -1,3 +1,11 @@
+/**
+ * Splash screen of Lockdown game
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
 package main;
 
 import javax.swing.*;
@@ -5,7 +13,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.net.URL;
-
+@SuppressWarnings("ALL")
     public class Lockdown_SplashScreen extends JFrame implements MouseListener {
 
         JLabel OSnakes_bg;
