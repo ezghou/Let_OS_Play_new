@@ -29,7 +29,7 @@ To open the executable file in the command prompt :
 
 [FORMAT]
 
-start ..*FILE_PATH*..\VirtualUniversityOfProgramming.exe
+start ..*FILE_PATH*..\Let_OS_Play.exe
 
 [SAMPLE]
 
