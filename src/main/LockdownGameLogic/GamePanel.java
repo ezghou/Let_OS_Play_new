@@ -1,6 +1,6 @@
 /**
  * Panel for the Lockdown
- * where chatracters, enemies,
+ * where characters, enemies,
  * and the lawn will be displayed.
  *
  * @author  EG Renz Go
@@ -249,7 +249,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         repaint();
         this.setBackground(Color.BLACK);
-        System.out.println("GAME OVER!!!");
+//        System.out.println("GAME OVER!!!");
     }
 
     public void paintComponent(Graphics g){
@@ -277,7 +277,7 @@ public class GamePanel extends JPanel implements Runnable{
                 enemyChara.render(g);
             }
         } catch (Exception e){
-            System.out.println("Exception in thread \"AWT-EventQueue-0\" java.util.ConcurrentModificationException");
+//            System.out.println("Exception in thread \"AWT-EventQueue-0\" java.util.ConcurrentModificationException");
         }
 
         //SELECTORS
@@ -296,7 +296,7 @@ public class GamePanel extends JPanel implements Runnable{
                 enemyChara.update();
             }
         } catch (Exception e){
-            System.out.println("ENTITY UPDATE/RENDER TIMING ERROR");
+//            System.out.println("ENTITY UPDATE/RENDER TIMING ERROR");
         }
 
         handleEnemyCharaCollision();

@@ -207,7 +207,7 @@ public class OSnakes_questionFrame extends JFrame implements MouseListener {
         choiceC.setText(choices[2]);
         choiceD.setText(choices[3]);
         gamePanel.setChoices(choices[0], choices[1], choices[2], choices[3], editQuestions.getCorrectAnswer());
-        System.out.println("answer: "+editQuestions.getCorrectAnswer());
+//        System.out.println("answer: "+editQuestions.getCorrectAnswer());
     }
 
     public void editPoints(int points){

@@ -1,5 +1,5 @@
 /**
- * Render enemy charcater
+ * Render enemy character
  *
  * @author  EG Renz Go
  * @author  Thereze Nuelle Roca

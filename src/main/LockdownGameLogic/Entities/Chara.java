@@ -54,7 +54,7 @@ public class Chara {
                 health = 15;
             }
             default -> {
-                System.out.println("ERROR");
+//                System.out.println("ERROR");
                 return;
             }
         }
@@ -99,7 +99,7 @@ public class Chara {
                 charaProjectile.draw(g);
             }
         } catch (Exception e){
-            System.out.println("Projectile Timing Error");
+//            System.out.println("Projectile Timing Error");
         }
     }
 

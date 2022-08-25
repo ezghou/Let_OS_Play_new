@@ -332,7 +332,7 @@ import java.util.logging.Logger;
         answer_C.setText(choices[2]);
         answer_D.setText(choices[3]);
         correctAnswer = editQuestions.getCorrectAnswer();
-        System.out.println("answer: "+correctAnswer);
+//        System.out.println("answer: "+correctAnswer);
     }
     /**
      * This method shows the user if the

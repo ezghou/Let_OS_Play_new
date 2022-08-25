@@ -116,7 +116,7 @@ public class Lockdown_QuestionsHandler implements Runnable {
         answer_C.setText(choices[2]);
         answer_D.setText(choices[3]);
         correctAnswer = editQuestions.getCorrectAnswer();
-        System.out.println("answer: "+correctAnswer);
+//        System.out.println("answer: "+correctAnswer);
     }
 
     public void setupChoices(JTextArea jTextArea){
