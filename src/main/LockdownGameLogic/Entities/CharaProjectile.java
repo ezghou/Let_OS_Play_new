@@ -1,3 +1,12 @@
+/**
+ * Render character projectiles
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic.Entities;
 
 import java.awt.*;

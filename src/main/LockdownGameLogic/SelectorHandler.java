@@ -1,3 +1,12 @@
+/**
+ * Manages mouse clicks
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic;
 import static main.LockdownGameLogic.Constants.*;
 

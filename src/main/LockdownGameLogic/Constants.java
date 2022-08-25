@@ -1,3 +1,12 @@
+/**
+ * Initialized constants for Lockdown
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic;
 
 import main.Lockdown_MainFrame;

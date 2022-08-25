@@ -1,3 +1,13 @@
+/**
+ * Prototype of GamePanel,
+ * use to debug.
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic;
 
 import java.awt.*;
@@ -11,6 +21,9 @@ public class Debug {
     long convert;
     public double elapsedTimeInSecond;
 
+    /**
+     * Check if loop/second is correct
+     */
     public void countSeconds(){
         long end = System.nanoTime();
         long elapsedTime = end - start;
@@ -19,7 +32,6 @@ public class Debug {
         long s = (long) elapsedTimeInSecond;
         start = end;
     }
-
     public long returnSeconds(){
         long end = System.nanoTime();
         long elapsedTime = end - start;
@@ -39,6 +51,7 @@ public class Debug {
     public Debug(){
         random = new Random();
     }
+
     public void getSprites(ArrayList arrayList){
         for(int y = 0; y < 10; y++){
             for(int x = 0; x < 10; x++){

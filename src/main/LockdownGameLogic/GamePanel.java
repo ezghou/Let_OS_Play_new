@@ -1,3 +1,14 @@
+/**
+ * Panel for the Lockdown
+ * where chatracters, enemies,
+ * and the lawn will be displayed.
+ *
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic;
 
 import main.LockdownGameLogic.Entities.Chara;
@@ -54,8 +65,6 @@ public class GamePanel extends JPanel implements Runnable{
             selectors.add(new SelectorHandler(x));
         }
 
-        //enemySpawnerViaKey();
-
         addMouseListener(new MouseAdapter(){
             @Override
             public void mousePressed(MouseEvent e) {
@@ -87,7 +96,6 @@ public class GamePanel extends JPanel implements Runnable{
                     if (grid.isClicked()) {
                         int rowCount = grid.getRowCount();
                         int columnCount = grid.getColumnCount();
-                        //System.out.println("Row: " + rowCount + "| Column: " + columnCount);
                         grid.setCollision(false);
 
                         if (grid.isOccupied()) {
@@ -102,7 +110,6 @@ public class GamePanel extends JPanel implements Runnable{
                         } else {
                             if (globalCharaID == 3 || globalCharaID == -1) return;
                             if(selectors.get(globalCharaID).cost > Coins) {
-                                System.out.println("NOT ENOUGH COINS");
                                 return;
                             }
                             Coins -= selectors.get(globalCharaID).cost;
@@ -120,9 +127,6 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         });
-
-
-
     }
 
 
@@ -189,7 +193,6 @@ public class GamePanel extends JPanel implements Runnable{
                     case 5 -> col5EnemCount++;
                 }
             }
-            //System.out.println("WAVE");
         }
 
         if(spawnerDebug2.elapsedTimeInSecond >= timeSpawn){
@@ -205,7 +208,6 @@ public class GamePanel extends JPanel implements Runnable{
                 case 5 -> col5EnemCount++;
             }
         }
-
     }
 
 
@@ -239,7 +241,6 @@ public class GamePanel extends JPanel implements Runnable{
 
             //CHECKING FPS AND UPS
             if(System.currentTimeMillis() - lastTimeCheck >= 1000){
-                //System.out.println("FPS: " + frames + "|" + " UPS: " + updates);
                 frames = 0;
                 updates = 0;
                 lastTimeCheck = System.currentTimeMillis();
@@ -267,13 +268,18 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
         drawGrid(g);
-        for (Chara chara : charas) {
-            chara.render(g);
+        try {
+            for (Chara chara : charas) {
+                chara.render(g);
+            }
+
+            for(EnemyChara enemyChara : enemyCharas){
+                enemyChara.render(g);
+            }
+        } catch (Exception e){
+            System.out.println("Exception in thread \"AWT-EventQueue-0\" java.util.ConcurrentModificationException");
         }
 
-        for(EnemyChara enemyChara : enemyCharas){
-            enemyChara.render(g);
-        }
         //SELECTORS
         drawSelector(g);
     }

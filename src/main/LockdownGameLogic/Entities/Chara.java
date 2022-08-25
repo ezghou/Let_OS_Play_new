@@ -1,3 +1,10 @@
+/**
+ * @author  EG Renz Go
+ * @author  Thereze Nuelle Roca
+ * @author  Erica Talahiban
+ * @version 1.0
+ */
+
 package main.LockdownGameLogic.Entities;
 
 import main.LockdownGameLogic.Constants;
@@ -10,8 +17,8 @@ import java.util.ArrayList;
 import static main.LockdownGameLogic.Constants.*;
 /**
  * A prototype Character class,
- * needs to be refactored
- * only purpose atm, is for debug rendering
+ * use only for rendering debug,
+ * use for debug rendering
  */
 public class Chara {
     //This position is relative off of its center

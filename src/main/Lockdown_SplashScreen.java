@@ -42,7 +42,6 @@ import java.net.URL;
             this.setVisible(true);
             this.getContentPane().add(OSnakes_bg);
         }
-
         @Override
         public void mouseClicked(MouseEvent e) {
             click.soundChoice(4);

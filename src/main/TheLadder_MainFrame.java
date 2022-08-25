@@ -53,7 +53,6 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         ApplyNow.setContentAreaFilled(false);
         ApplyNow.setFocusable(false);
         ApplyNow.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-        //ApplyNow.setFocusPainted(false);
         ApplyNow.addMouseListener(this);
 
         HowToPlayButton = new JButton();
@@ -67,7 +66,6 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         HowToPlayButton.setContentAreaFilled(false);
         HowToPlayButton.setFocusable(false);
         HowToPlayButton.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-        //HowToPlayButton.setFocusPainted(false);
         HowToPlayButton.addMouseListener(this);
 
         Exit = new JButton();
@@ -81,7 +79,6 @@ public class TheLadder_MainFrame extends JFrame implements MouseListener {
         Exit.setContentAreaFilled(false);
         Exit.setFocusable(false);
         Exit.setBorder(BorderFactory.createLineBorder(new Color(113, 192, 250),4));
-        //Exit.setFocusPainted(false);
         Exit.addMouseListener(this);
 
         music();
